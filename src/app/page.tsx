@@ -1,103 +1,54 @@
-import Image from "next/image";
+// Copyright (c) 2025 Joshua Kaplan – Licensed under MIT
+'use client';
 
-export default function Home() {
+import React from 'react';
+import { Typography, Button, Row, Col, Card } from 'antd';
+import { GithubOutlined, LinkedinOutlined, MailOutlined } from '@ant-design/icons';
+import { MainLayout } from '@/components/app/MainLayout';
+
+const { Title, Paragraph } = Typography;
+
+export default function HomePage() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+    <MainLayout>
+      <section className="text-center mb-16">
+        <Title level={1}>Hello, I'm Joshua Kaplan</Title>
+        <Paragraph>I'm a Software Engineer. Welcome to my portfolio!</Paragraph>
+        <div className="flex justify-center space-x-4 mt-6">
+          <Button type="primary" size="large">View Projects</Button>
+          <Button size="large">Contact Me</Button>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+      </section>
+
+      <section id="about" className="mb-16">
+        <Title level={2}>About Me</Title>
+        <Paragraph>
+          [Write a brief introduction about yourself, your skills, and interests.]
+        </Paragraph>
+      </section>
+
+      <section id="projects" className="mb-16">
+        <Title level={2}>Projects</Title>
+        <Row gutter={[16, 16]}>
+          {[1, 2, 3].map((project) => (
+            <Col xs={24} sm={12} md={8} key={project}>
+              <Card hoverable title={`Project ${project}`} className="h-full">
+                <Paragraph>[Brief description of Project {project}.]</Paragraph>
+                <Button type="link" href="#">View Details</Button>
+              </Card>
+            </Col>
+          ))}
+        </Row>
+      </section>
+
+      <section id="contact" className="mb-16 text-center">
+        <Title level={2}>Get In Touch</Title>
+        <div className="flex justify-center space-x-6 text-2xl">
+          <a href="#" aria-label="GitHub"><GithubOutlined /></a>
+          <a href="#" aria-label="LinkedIn"><LinkedinOutlined /></a>
+          <a href="#" aria-label="Email"><MailOutlined /></a>
+        </div>
+      </section>
+    </MainLayout>
   );
 }

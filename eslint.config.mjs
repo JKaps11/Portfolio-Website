@@ -10,7 +10,15 @@ const compat = new FlatCompat({
 });
 
 const eslintConfig = [
+  // your Next.js recommended presets
   ...compat.extends("next/core-web-vitals", "next/typescript"),
+
+  // disable the no-unescaped-entities rule
+  {
+    rules: {
+      "react/no-unescaped-entities": "off",
+    },
+  },
 ];
 
 export default eslintConfig;
