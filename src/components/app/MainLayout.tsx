@@ -1,38 +1,61 @@
-import { Layout, Menu } from 'antd';
 import Link from 'next/link';
+import { AntLayoutClient } from './AntLayoutClient';
+import { Title } from '@/components/client/Typography';
+import { GithubOutlined, LinkedinOutlined, MailOutlined, HomeOutlined } from '@ant-design/icons';
 
-const { Header, Content, Footer } = Layout;
-
-export const MainLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => (
-  <Layout className="min-h-screen">
-    <Header className="bg-white shadow-md">
-      <div className="container mx-auto flex justify-between items-center">
-        <Link href="/" className="text-xl font-bold">
-          Your Name
+export const MainLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+  const headerContent = (
+    <div className="container mx-auto flex items-center h-full">
+      <div className="flex items-center gap-4">
+        <Link href="/" className="text-white hover:text-white/80 flex items-center" aria-label="Home">
+          <HomeOutlined className="text-xl" />
         </Link>
-        <Menu mode="horizontal" defaultSelectedKeys={["home"]} className="bg-transparent">
-          <Menu.Item key="home">
-            <Link href="/">Home</Link>
-          </Menu.Item>
-          <Menu.Item key="about">
-            <Link href="/about">About</Link>
-          </Menu.Item>
-          <Menu.Item key="projects">
-            <Link href="/projects">Projects</Link>
-          </Menu.Item>
-          <Menu.Item key="contact">
-            <Link href="/contact">Contact</Link>
-          </Menu.Item>
-        </Menu>
+        <div className="flex items-center">
+          <Title level={4} className="text-white !m-0 leading-none">Joshua Kaplan</Title>
+        </div>
       </div>
-    </Header>
+    </div>
+  );
 
-    <Content className="container mx-auto py-16">
-      {children}
-    </Content>
+  const footerContent = (
+    <div className="text-white text-center">
+      <Title level={3} className="text-white mb-4">Get In Touch</Title>
+      <div className="flex justify-center space-x-6 mb-4">
+        <a 
+          href="https://github.com/JKaps11" 
+          className="social-link" 
+          aria-label="GitHub"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <GithubOutlined />
+        </a>
+        <a 
+          href="https://www.linkedin.com/in/joshua-kaplan-a88315245/" 
+          className="social-link" 
+          aria-label="LinkedIn"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <LinkedinOutlined />
+        </a>
+        <a 
+          href="mailto:jkaps11@gmail.com" 
+          className="social-link" 
+          aria-label="Email"
+        >
+          <MailOutlined />
+        </a>
+      </div>
+      <div>© 2025 Joshua Kaplan. Code licensed under MIT.</div>
+    </div>
+  );
 
-    <Footer className="text-center bg-gray-100 py-4">
-      © 2025 Joshua Kaplan. Code licensed under MIT.
-    </Footer>
-  </Layout>
-);
+  return (
+    <AntLayoutClient
+      headerContent={headerContent}
+      mainContent={children}
+      footerContent={footerContent}
+    />
+  );
+};
