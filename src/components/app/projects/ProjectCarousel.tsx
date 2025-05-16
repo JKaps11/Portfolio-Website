@@ -24,13 +24,13 @@ export const ProjectCarousel: React.FC<ProjectCarouselProps> = ({ projects }) =>
                 href={project.html_url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center justify-center gap-2 text-gray-600 hover:text-primary transition-colors"
+                className="flex items-center justify-center gap-2 hover:text-primary transition-colors"
               >
                 <GithubOutlined /> View on GitHub
               </a>
             ]}
           >
-            <p className="text-gray-600">{project.description || '[No description available]'}</p>
+            <p className="text-secondary">{project.description || '[No description available]'}</p>
           </Card>
         </div>
       ))}

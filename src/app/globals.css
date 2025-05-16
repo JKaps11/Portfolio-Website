@@ -3,6 +3,7 @@
 :root {
   /* Theme colors */
   --primary: #b22222;
+  --secondary: #000000;
 }
 
 html, body {

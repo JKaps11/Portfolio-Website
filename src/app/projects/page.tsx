@@ -9,7 +9,7 @@ const loadingIcon = <LoadingOutlined style={{ fontSize: 48 }} spin />;
 export default function ProjectPage() {
   return (
     <section id="projects">
-      <Title level={1} className="text-center mb-8">Projects</Title>
+      <Title level={1} className="text-center pb-16">Projects</Title>
       <Suspense fallback={
         <Flex align="center" justify="center" className="min-h-[600px]">
           <Spin indicator={loadingIcon} />

@@ -5,6 +5,11 @@ import "./globals.css";
 import { ConfigProvider } from "antd";
 import { MainLayout } from "@/components/app/MainLayout";
 
+const COLOR_PRIMARY = '#b22222';
+const COLOR_WHITE = '#ffffff';
+const COLOR_BLACK = '#000000';
+const COLOR_HEADER_BG = '#8B0000';
+
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -32,31 +37,42 @@ export default function RootLayout({
       >
         <ConfigProvider theme={{
           token: {
-            colorPrimary: '#b22222',
-            colorBgBase: '#ffffff',
-            colorText:'#000000',
-            colorTextHeading: '#000000',
-            colorBgLayout: '#ffffff',
-            colorLink:'#ffffff'
+            colorPrimary: COLOR_PRIMARY,
+            colorBgBase: COLOR_WHITE,
+            colorText: COLOR_BLACK,
+            colorTextHeading: COLOR_BLACK,
+            colorBgLayout: COLOR_WHITE,
+            colorLink: COLOR_WHITE
           },
           components: {
             Spin: {
-              colorPrimary: '#b22222',
-              colorPrimaryActive: '#b22222',
-              colorPrimaryHover: '#b22222',
-              colorPrimaryTextActive: '#000000',
-              colorPrimaryTextHover: '#000000',
+              colorPrimary: COLOR_PRIMARY,
+              colorPrimaryActive: COLOR_PRIMARY,
+              colorPrimaryHover: COLOR_PRIMARY,
+              colorPrimaryTextActive: COLOR_BLACK,
+              colorPrimaryTextHover: COLOR_BLACK,
             },
             Layout: {
-              headerColor: '#ffffff',
-              headerBg: '#8B0000',
-              footerBg: '#000000',
+              headerColor: COLOR_WHITE,
+              headerBg: COLOR_HEADER_BG,
+              footerBg: COLOR_BLACK,
               footerPadding: '24px'
             },
             Typography: {
               colorTextHeading: 'inherit',
-              titleMarginBottom: 0,
+              titleMarginBottom: '18px',
               titleMarginTop: 0
+            },
+            Card: {
+              colorText: COLOR_BLACK,
+              colorBgContainer: COLOR_WHITE,
+              colorBgSolidHover: COLOR_PRIMARY,
+            },
+            Carousel: {
+              colorBgContainer: COLOR_PRIMARY,
+              dotHeight: 8,
+              dotWidth: 8,
+              dotActiveWidth: 8,
             }
           }
         }}>

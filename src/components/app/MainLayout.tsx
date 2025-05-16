@@ -1,8 +1,7 @@
 import Link from 'next/link';
-import { AntLayoutClient } from './AntLayoutClient';
 import { Title } from '@/components/client/Typography';
 import { GithubOutlined, LinkedinOutlined, MailOutlined, HomeOutlined } from '@ant-design/icons';
-
+import { AntLayoutClient } from '@/components/client/Layout';
 export const MainLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const headerContent = (
     <div className="container mx-auto flex items-center h-full">
