@@ -2,9 +2,10 @@
 
 import { Layout } from 'antd';
 import { ReactNode } from 'react';
+import NavSelector from '../app/NavSelector';
 
 interface AntLayoutClientProps {
-  headerContent?: ReactNode;
+  headerContent: boolean;
   mainContent: ReactNode;
   footerContent?: ReactNode;
   contentClassName?: string;
@@ -19,9 +20,7 @@ export const AntLayoutClient: React.FC<AntLayoutClientProps> = ({
   <Layout className="min-h-screen flex flex-col w-full" style={{ background: 'var(--homepage-gradient)' }}>
     {headerContent && (
       <Layout.Header className="w-full p-0" style={{ padding: 0 }}>
-        <div className="w-full" style={{ padding: 0 }}>
-          {headerContent}
-        </div>
+        <NavSelector/>
       </Layout.Header>
     )}
 

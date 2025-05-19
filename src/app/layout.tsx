@@ -72,11 +72,11 @@ export default function RootLayout({
               dotActiveWidth: 8,
             },
             Button: {
-              colorText: COLOR_WHITE,
               colorBgContainer: 'transparent',
-              fontWeight: 500,
+              fontWeight: 700,
               borderRadius: 6,
             },
+
           }
         }}>
           <AntdRegistry>

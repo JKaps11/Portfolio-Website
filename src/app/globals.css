@@ -9,11 +9,11 @@
 }
 
 .custom-icon-button {
-  width: 55px;
-  height: 55px;
+  width: 48px;
+  height: 48px;
   border-radius: 50%;
   background-color: transparent;
-  border: none;
+  border: 1px solid var(--tertiary);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -62,3 +62,28 @@ body {
   color: var(--primary) !important;
 }
 
+.ant-radio-button-wrapper {
+  width: 120px;
+  height: 48px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav-button {
+  /* default/reset if needed */
+  background-color: transparent;               /* no fill by default */  /* :contentReference[oaicite:0]{index=0} */
+  color: inherit;                              /* inherit your text color */  /*  */
+  border-color: transparent;                   /* no border by default */  /* :contentReference[oaicite:2]{index=2} */
+  transition: background-color 0.2s, color 0.2s;/* smooth transition */      /* :contentReference[oaicite:3]{index=3} */
+}
+
+.nav-button:hover {
+  background-color: var(--tertiary);             
+  transition: background-color 0.2s, color 0.2s;/* smooth transition */      /* :contentReference[oaicite:3]{index=3} */
+}
+
+
+.ant-radio-button-wrapper-checked {
+  color: var(--color-primary) !important;       
+}
