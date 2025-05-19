@@ -16,7 +16,7 @@ export const AntLayoutClient: React.FC<AntLayoutClientProps> = ({
   footerContent,
   contentClassName = "py-16 flex-grow"
 }) => (
-  <Layout className="min-h-screen flex flex-col w-full">
+  <Layout className="min-h-screen flex flex-col w-full" style={{ background: 'var(--homepage-gradient)' }}>
     {headerContent && (
       <Layout.Header className="w-full p-0" style={{ padding: 0 }}>
         <div className="w-full" style={{ padding: 0 }}>
@@ -25,7 +25,7 @@ export const AntLayoutClient: React.FC<AntLayoutClientProps> = ({
       </Layout.Header>
     )}
 
-    <Layout.Content className={`${contentClassName} bg-gradient-to-b from-[#b22222] to-black`}>
+    <Layout.Content className={`${contentClassName}`}>
       {mainContent}
     </Layout.Content>
 

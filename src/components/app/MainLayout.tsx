@@ -18,19 +18,37 @@ const Dot = () => (
 
 export const MainLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const headerContent = (
-    <Flex align="center" justify="evenly" className="w-full h-full" style={{ flexGrow: 1, width: '100%' }}>
-      <Link href="/projects"><Button type="text">View Projects</Button></Link>
-      <Dot />
-      <Link href="/about"><Button type="text">About Me</Button></Link>
-      <Dot />
-      <Link href="/" aria-label="Home">
-        <Button type="text" size={'large'} shape="circle" icon={<HomeOutlined />} />
+    <div className="flex items-center justify-evenly w-full h-full">
+      <Link href="/projects">
+        <Button type="text">View Projects</Button>
       </Link>
       <Dot />
-      <Link href="/experience"><Button type="text">Experience</Button></Link>
+      <Link href="/about">
+        <Button type="text">About Me</Button>
+      </Link>
       <Dot />
-      <Button type="text" href="mailto:jkaps11@gmail.com">Contact Me</Button>
-    </Flex>
+      <Link href="/" aria-label="Home">
+      <Link href="/" aria-label="Home">
+  <Button
+    type="text"
+    shape="circle"
+    size='large'
+  
+    icon={
+      <HomeOutlined />
+    }
+  />
+</Link>
+      </Link>
+      <Dot />
+      <Link href="/experience">
+        <Button type="text">Experience</Button>
+      </Link>
+      <Dot />
+      <Button type="text" href="mailto:jkaps11@gmail.com">
+        Contact Me
+      </Button>
+    </div>
   );
 
   const footerContent = (

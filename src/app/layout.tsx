@@ -51,8 +51,8 @@ export default function RootLayout({
             },
             Layout: {
               headerColor: COLOR_WHITE,
-              headerBg: COLOR_PRIMARY,
-              footerBg: COLOR_BLACK,
+              headerBg: 'transparent',
+              footerBg: 'transparent',
               footerPadding: '16px',
             },
             Typography: {
