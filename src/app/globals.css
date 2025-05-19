@@ -4,6 +4,8 @@
   /* Theme colors */
   --primary: #b22222;
   --secondary: #000000;
+  --tertiary: #ffffff;
+  --homepage-gradient: linear-gradient(to bottom, #b22222, #000000);
 }
 
 html, body {
@@ -28,4 +30,8 @@ body {
 .social-link:hover {
   color: var(--primary);
   opacity: 1;
+}
+.ant-btn-text:hover, .ant-btn-text:focus {
+  background: var(--tertiary) !important;
+  color: var(--primary) !important;
 }

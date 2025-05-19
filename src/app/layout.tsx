@@ -8,7 +8,6 @@ import { MainLayout } from "@/components/app/MainLayout";
 const COLOR_PRIMARY = '#b22222';
 const COLOR_WHITE = '#ffffff';
 const COLOR_BLACK = '#000000';
-const COLOR_HEADER_BG = '#8B0000';
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -31,32 +30,30 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="h-full">
+    <html lang="en" className="h-full w-full">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-full h-full`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased h-full w-full`}
       >
         <ConfigProvider theme={{
           token: {
             colorPrimary: COLOR_PRIMARY,
-            colorBgBase: COLOR_WHITE,
-            colorText: COLOR_BLACK,
-            colorTextHeading: COLOR_BLACK,
-            colorBgLayout: COLOR_WHITE,
-            colorLink: COLOR_WHITE
+            colorText: COLOR_WHITE,
+            colorTextHeading: COLOR_WHITE,
+            colorBgLayout: 'transparent',
+            colorBgContainer: 'transparent',
+            colorLink: COLOR_WHITE,
           },
           components: {
             Spin: {
-              colorPrimary: COLOR_PRIMARY,
-              colorPrimaryActive: COLOR_PRIMARY,
-              colorPrimaryHover: COLOR_PRIMARY,
-              colorPrimaryTextActive: COLOR_BLACK,
-              colorPrimaryTextHover: COLOR_BLACK,
+              colorPrimary: COLOR_WHITE,
+              colorPrimaryActive: COLOR_WHITE,
+              colorPrimaryHover: COLOR_WHITE,
             },
             Layout: {
               headerColor: COLOR_WHITE,
-              headerBg: COLOR_HEADER_BG,
+              headerBg: COLOR_PRIMARY,
               footerBg: COLOR_BLACK,
-              footerPadding: '24px'
+              footerPadding: '16px',
             },
             Typography: {
               colorTextHeading: 'inherit',
@@ -73,7 +70,13 @@ export default function RootLayout({
               dotHeight: 8,
               dotWidth: 8,
               dotActiveWidth: 8,
-            }
+            },
+            Button: {
+              colorText: COLOR_WHITE,
+              colorBgContainer: 'transparent',
+              fontWeight: 500,
+              borderRadius: 6,
+            },
           }
         }}>
           <AntdRegistry>

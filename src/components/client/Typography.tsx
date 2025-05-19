@@ -1,9 +1,10 @@
 'use client';
 
 import { Typography as AntTypography } from 'antd';
+import { TextProps } from 'antd/es/typography/Text';
 import { ReactNode } from 'react';
 
-const { Title: AntTitle, Paragraph: AntParagraph } = AntTypography;
+const { Title: AntTitle, Paragraph: AntParagraph, Text: AntText } = AntTypography;
 
 interface TitleProps {
   level?: 1 | 2 | 3 | 4 | 5;
@@ -23,3 +24,7 @@ export const Title: React.FC<TitleProps> = ({ level, children, className }) => (
 export const Paragraph: React.FC<ParagraphProps> = ({ children, className }) => (
   <AntParagraph className={className}>{children}</AntParagraph>
 ); 
+
+export const Text: React.FC<TextProps> = ({ children, className }) => (
+  <AntText className={className}>{children}</AntText>
+);

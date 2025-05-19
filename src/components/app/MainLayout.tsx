@@ -1,24 +1,40 @@
 import Link from 'next/link';
-import { Title } from '@/components/client/Typography';
 import { GithubOutlined, LinkedinOutlined, MailOutlined, HomeOutlined } from '@ant-design/icons';
 import { AntLayoutClient } from '@/components/client/Layout';
+import { FadeIn } from '@/components/client/FadeIn';
+import { Button } from '../client/Button';
+import { Flex } from '../client/Flex';
+
+const Dot = () => (
+  <div style={{
+    width: 8,
+    height: 8,
+    background: 'white',
+    borderRadius: 2,
+    display: 'inline-block',
+    margin: '0 12px'
+  }} />
+);
+
 export const MainLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const headerContent = (
-    <div className="container mx-auto flex items-center h-full">
-      <div className="flex items-center gap-4">
-        <Link href="/" className="text-white hover:text-white/80 flex items-center" aria-label="Home">
-          <HomeOutlined className="text-xl" />
-        </Link>
-        <div className="flex items-center">
-          <Title level={4} className="text-white !m-0 leading-none">Joshua Kaplan</Title>
-        </div>
-      </div>
-    </div>
+    <Flex align="center" justify="evenly" className="w-full h-full" style={{ flexGrow: 1, width: '100%' }}>
+      <Link href="/projects"><Button type="text">View Projects</Button></Link>
+      <Dot />
+      <Link href="/about"><Button type="text">About Me</Button></Link>
+      <Dot />
+      <Link href="/" aria-label="Home">
+        <Button type="text" size={'large'} shape="circle" icon={<HomeOutlined />} />
+      </Link>
+      <Dot />
+      <Link href="/experience"><Button type="text">Experience</Button></Link>
+      <Dot />
+      <Button type="text" href="mailto:jkaps11@gmail.com">Contact Me</Button>
+    </Flex>
   );
 
   const footerContent = (
     <div className="text-white text-center">
-      <Title level={3} className="text-white mb-4">Get In Touch</Title>
       <div className="flex justify-center space-x-6 mb-4">
         <a 
           href="https://github.com/JKaps11" 
@@ -53,7 +69,7 @@ export const MainLayout: React.FC<{ children: React.ReactNode }> = ({ children }
   return (
     <AntLayoutClient
       headerContent={headerContent}
-      mainContent={children}
+      mainContent={<FadeIn>{children}</FadeIn>}
       footerContent={footerContent}
     />
   );

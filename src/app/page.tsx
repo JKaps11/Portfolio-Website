@@ -3,27 +3,16 @@ import React from 'react';
 import Link from 'next/link';
 import { Title, Paragraph } from '@/components/client/Typography';
 import { Button } from '@/components/client/Button';
+import GithubProfilePicture from '@/components/app/homePage/GithubProfilePicture';
+import { Flex } from '@/components/client/Flex';
 
 export default function HomePage() {
   return (
-    <>
-      <section className="text-center mb-16">
-        <Title level={1}>Hello, I'm Joshua Kaplan</Title>
-        <Paragraph>I'm a Software Engineer. Welcome to my portfolio!</Paragraph>
-        <div className="flex justify-center space-x-4 mt-6">
-          <Link href="/projects">
-            <Button type="primary" size="large">View Projects</Button>
-          </Link>
-          <Button size="large" href="mailto:jkaps11@gmail.com">Contact Me</Button>
-        </div>
-      </section>
-
-      <section id="about" className="mb-16">
-        <Title level={2}>About Me</Title>
-        <Paragraph>
-          [Write a brief introduction about yourself, your skills, and interests.]
-        </Paragraph>
-      </section>
-    </>
+    <Flex align="center" justify="center" gap={40} vertical={true} className="flex-1">
+      <Flex align="center" gap={40} className="border border-white rounded-xl p-12 max-w-2xl w-full mx-auto">
+        <GithubProfilePicture />
+        <Title level={1} className="!mb-0">Hello, I'm Joshua Kaplan</Title>
+      </Flex>
+    </Flex>
   );
 }
