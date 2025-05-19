@@ -31,8 +31,20 @@ export default async function GithubProfilePicture() {
   const user = await fetchGitHubProfile();
 
   return (
-    <div style={{ display: 'flex', justifyContent: 'center', margin: '2rem auto' }}>
-      <Avatar size={200} src={user.avatarUrl} />
-    </div>
+   <div
+  style={{
+    display: 'flex',
+    justifyContent: 'center',
+    margin: '2rem auto',
+    boxShadow: '0 0 20px rgba(255, 255, 255, 0.6)',
+    borderRadius: '50%',
+    width: '200px',
+    height: '200px',
+    overflow: 'hidden',
+  }}
+>
+  <Avatar size={200} src={user.avatarUrl} />
+</div>
+
   );
 }

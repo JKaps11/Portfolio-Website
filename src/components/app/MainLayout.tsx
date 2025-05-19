@@ -3,8 +3,6 @@ import { GithubOutlined, LinkedinOutlined, MailOutlined, HomeOutlined } from '@a
 import { AntLayoutClient } from '@/components/client/Layout';
 import { FadeIn } from '@/components/client/FadeIn';
 import { Button } from '../client/Button';
-import { Flex } from '../client/Flex';
-
 const Dot = () => (
   <div style={{
     width: 8,
@@ -23,22 +21,14 @@ export const MainLayout: React.FC<{ children: React.ReactNode }> = ({ children }
         <Button type="text">View Projects</Button>
       </Link>
       <Dot />
-      <Link href="/about">
-        <Button type="text">About Me</Button>
+      <Link href="/skills">
+        <Button type="text">Skills</Button>
       </Link>
       <Dot />
       <Link href="/" aria-label="Home">
-      <Link href="/" aria-label="Home">
-  <Button
-    type="text"
-    shape="circle"
-    size='large'
-  
-    icon={
-      <HomeOutlined />
-    }
-  />
-</Link>
+         <button className="custom-icon-button" aria-label="Home">
+    <HomeOutlined />
+  </button>
       </Link>
       <Dot />
       <Link href="/experience">

@@ -1,9 +1,7 @@
 // Copyright (c) 2025 Joshua Kaplan – Licensed under MIT
 import React from 'react';
-import Link from 'next/link';
-import { Title, Paragraph } from '@/components/client/Typography';
-import { Button } from '@/components/client/Button';
-import GithubProfilePicture from '@/components/app/homePage/GithubProfilePicture';
+import { Title } from '@/components/client/Typography';
+import GithubProfilePicture from '@/components/app/GithubProfilePicture';
 import { Flex } from '@/components/client/Flex';
 
 export default function HomePage() {
