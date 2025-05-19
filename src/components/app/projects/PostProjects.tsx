@@ -1,9 +1,7 @@
 import { Card } from "@/components/client/Card";
-import { Col } from "@/components/client/Grid";
-import { Row } from "@/components/client/Grid";
+import { Col, Row } from "@/components/client/Grid";
 import { GithubOutlined } from '@ant-design/icons';
 import { GitHubRepo } from "@/types";
-import { ProjectCarousel } from './ProjectCarousel';
 
 const hideProjectsWithNoDescription = true;  
 
@@ -20,10 +18,8 @@ export default async function PostProjects() {
     const featuredProjects = filteredData.slice(0, 5);
     
     return (
-      <div className="space-y-12">
-        <ProjectCarousel projects={featuredProjects} />
-        
-        <Row gutter={[24, 24]}>
+      <div className="p-12">
+        <Row gutter={[24, 24]} className="w-full h-full">
           {filteredData.map((project) => (
             <Col xs={24} sm={12} lg={8} key={project.id}>
               <Card 

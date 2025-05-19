@@ -8,6 +8,7 @@ interface ProjectsLayoutProps {
 export const ProjectsLayout: React.FC<ProjectsLayoutProps> = ({ children }) => {
   return (
     <AntLayoutClient 
+      headerContent={false}
       mainContent={children}
       contentClassName="container mx-auto"
     />

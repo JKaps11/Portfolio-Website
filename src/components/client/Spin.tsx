@@ -8,7 +8,7 @@ interface SpinProps {
 }
 
 export const Spin: React.FC<SpinProps> = ({ spinning, tip }) => (
-    <AntSpin spinning={spinning} tip={tip} />
+    <AntSpin size="large" spinning={spinning} tip={tip} />
 );
 
 export default Spin;

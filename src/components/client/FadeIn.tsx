@@ -7,7 +7,7 @@ interface FadeInProps {
 }
 
 export const FadeIn: React.FC<FadeInProps> = ({ children }) => (
-  <div className="fade-in">
+  <div className="fade-in h-full w-full">
     {children}
   </div>
 ); 

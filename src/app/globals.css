@@ -9,8 +9,8 @@
 }
 
 .custom-icon-button {
-  width: 48px;
-  height: 48px;
+  width: 72px;
+  height: 72px;
   border-radius: 50%;
   background-color: transparent;
   border: 1px solid var(--tertiary);
@@ -20,17 +20,27 @@
   color: var(--tertiary);
   cursor: pointer;
   transition: background-color 0.2s, color 0.2s;
+  margin: 0 0.5rem;
+  overflow: hidden;
 }
 
 .custom-icon-button:hover,
-.custom-icon-button:focus {
-  background-color: var(--tertiary);
-  color: var(--primary);
-  outline: none;
+.custom-icon-button:focus,
+.custom-icon-button:focus-visible,
+.custom-icon-button.active {
+  background-color: var(--tertiary) !important;
+  color: var(--primary) !important;
+  outline: none !important;
+}
+
+/* Override Ant Design's default focus styles */
+.custom-icon-button:focus-visible {
+  box-shadow: none !important;
 }
 
 .custom-icon-button svg {
-  font-size: 28px;
+  font-size: 32px;
+  transition: color 0.2s;
 }
 
 
@@ -57,33 +67,99 @@ body {
   color: var(--primary);
   opacity: 1;
 }
-.ant-btn-text:hover, .ant-btn-text:focus {
-  background: var(--tertiary) !important;
-  color: var(--primary) !important;
+
+/* Custom nav bar styles */
+.custom-nav-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding-top: 1.5rem;
+  padding-bottom: 0.5rem;
 }
 
-.ant-radio-button-wrapper {
-  width: 120px;
+.custom-nav-inner {
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  background: transparent;
+  height: 72px;
+}
+
+.nav-group {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  border: 1px solid var(--tertiary);
+  border-radius: 0.5rem;
   height: 48px;
-  display: inline-flex;
+  overflow: hidden;
+}
+
+.nav-group:first-child {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.nav-group:last-child {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.custom-nav-btn {
+  padding: 0rem 1.5rem;
+  color: var(--tertiary);
+  background: transparent;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 1rem;
+  transition: background 0.2s, color 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  min-width: 120px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  position: relative;
+  z-index: 1;
+}
+
+.custom-nav-btn:not(:last-child) {
+  border-right: 1px solid var(--tertiary);
+}
+
+.custom-nav-btn:hover, .custom-nav-btn.active {
+  background: var(--tertiary);
+  color: var(--primary);
+}
+
+.custom-nav-btn.home-btn {
+  border-radius: 0;
+  border-left: 1px solid var(--tertiary);
+  border-right: 1px solid var(--tertiary);
+  width: 48px;
+  padding: 0;
+  display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.nav-button {
-  /* default/reset if needed */
-  background-color: transparent;               /* no fill by default */  /* :contentReference[oaicite:0]{index=0} */
-  color: inherit;                              /* inherit your text color */  /*  */
-  border-color: transparent;                   /* no border by default */  /* :contentReference[oaicite:2]{index=2} */
-  transition: background-color 0.2s, color 0.2s;/* smooth transition */      /* :contentReference[oaicite:3]{index=3} */
+/* Fade In Animation */
+.fade-in {
+  animation: fadeIn 1.2s ease-in-out;
+  opacity: 0;
+  animation-fill-mode: forwards;
 }
 
-.nav-button:hover {
-  background-color: var(--tertiary);             
-  transition: background-color 0.2s, color 0.2s;/* smooth transition */      /* :contentReference[oaicite:3]{index=3} */
-}
-
-
-.ant-radio-button-wrapper-checked {
-  color: var(--color-primary) !important;       
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

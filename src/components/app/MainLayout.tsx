@@ -1,7 +1,6 @@
-import { GithubOutlined, LinkedinOutlined, MailOutlined } from '@ant-design/icons';
+import { GithubOutlined, LinkedinOutlined, MailOutlined} from '@ant-design/icons';
 import { AntLayoutClient } from '@/components/client/Layout';
 import { FadeIn } from '@/components/client/FadeIn';
-
 
 export const MainLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
 
