@@ -1,3 +1,4 @@
+// Copyright (c) 2025 Joshua Kaplan – Licensed under MIT
 'use client'
 
 import { useState, useEffect, useRef } from 'react'

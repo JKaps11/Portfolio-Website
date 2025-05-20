@@ -1,3 +1,4 @@
+// Copyright (c) 2025 Joshua Kaplan – Licensed under MIT
 import { Button } from '@/components/client/Button';
 import { Paragraph, Title } from '@/components/client/Typography';
 import Link from 'next/link';

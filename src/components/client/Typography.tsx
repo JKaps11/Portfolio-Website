@@ -1,3 +1,4 @@
+// Copyright (c) 2025 Joshua Kaplan – Licensed under MIT
 'use client';
 
 import { Typography as AntTypography } from 'antd';
@@ -22,8 +23,8 @@ export const Title: React.FC<TitleProps> = ({ level, children, className }) => (
 );
 
 export const Paragraph: React.FC<ParagraphProps> = ({ children, className }) => (
-  <AntParagraph className={className}>{children}</AntParagraph>
-); 
+  <AntParagraph style={{ fontSize: '16px' }} className={className}>{children}</AntParagraph>
+);
 
 export const Text: React.FC<TextProps> = ({ children, className }) => (
   <AntText className={className}>{children}</AntText>

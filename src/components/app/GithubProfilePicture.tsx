@@ -1,3 +1,4 @@
+// Copyright (c) 2025 Joshua Kaplan – Licensed under MIT
 import { Avatar } from '@/components/client/Avatar';
 import React from 'react';
 
@@ -31,20 +32,20 @@ export default async function GithubProfilePicture() {
   const user = await fetchGitHubProfile();
 
   return (
-   <div
-  style={{
-    display: 'flex',
-    justifyContent: 'center',
-    margin: '2rem auto',
-    boxShadow: '0 0 20px rgba(255, 255, 255, 0.6)',
-    borderRadius: '50%',
-    width: '200px',
-    height: '200px',
-    overflow: 'hidden',
-  }}
->
-  <Avatar size={200} src={user.avatarUrl} />
-</div>
-
+    <Avatar
+      style={{
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        margin: '2rem auto',
+        border: '10px solid #fff',
+        // boxShadow: '0 0 20px rgba(255, 255, 255, 0.6)',
+        borderRadius: '50%',
+        width: '300px',
+        height: '300px',
+        overflow: 'hidden',
+      }}
+      src={user.avatarUrl}
+    />
   );
 }
