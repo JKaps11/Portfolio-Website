@@ -6,7 +6,7 @@ export const MainLayout: React.FC<{ children: React.ReactNode }> = ({ children }
 
   const footerContent = (
     <div className="text-white text-center">
-      <div className="flex justify-center space-x-6 mb-4">
+      {/* <div className="flex justify-center space-x-6 mb-4">
         <a 
           href="https://github.com/JKaps11" 
           className="social-link" 
@@ -32,7 +32,7 @@ export const MainLayout: React.FC<{ children: React.ReactNode }> = ({ children }
         >
           <MailOutlined />
         </a>
-      </div>
+      </div> */}
       <div>© 2025 Joshua Kaplan. Code licensed under MIT.</div>
     </div>
   );

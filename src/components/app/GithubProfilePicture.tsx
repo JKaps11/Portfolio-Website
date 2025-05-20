@@ -37,13 +37,19 @@ export default async function GithubProfilePicture() {
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        margin: '2rem auto',
         border: '10px solid #fff',
         // boxShadow: '0 0 20px rgba(255, 255, 255, 0.6)',
         borderRadius: '50%',
-        width: '300px',
-        height: '300px',
+        width: '25rem',
+        height: '25rem',
+        maxWidth: '25rem',
+        maxHeight: '25rem',
+        minHeight: '5rem',
+        minWidth: '5rem',
         overflow: 'hidden',
+        boxShadow: '0 0 20px rgba(255, 255, 255, 0.3)',
+        transform: 'scale(1.02)',
+        transition: 'all 0.3s ease',
       }}
       src={user.avatarUrl}
     />

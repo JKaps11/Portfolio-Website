@@ -59,7 +59,6 @@ export default function RootLayout({
               colorTextHeading: 'inherit',
               titleMarginBottom: '18px',
               titleMarginTop: 0,
-              fontSizeHeading1: 64,
             },
             Card: {
               colorText: COLOR_BLACK,
