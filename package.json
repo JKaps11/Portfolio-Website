@@ -12,8 +12,10 @@
     "@ant-design/nextjs-registry": "^1.0.2",
     "antd": "^5.25.1",
     "next": "15.3.2",
+    "nodemailer": "^7.0.3",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
+    "zod": "^3.25.13",
     "zustand": "^5.0.4"
   },
   "devDependencies": {
@@ -21,6 +23,7 @@
     "@iconify-icon/react": "^3.0.0",
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
+    "@types/nodemailer": "^6.4.17",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "eslint": "^9",

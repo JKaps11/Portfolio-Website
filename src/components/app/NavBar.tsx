@@ -6,11 +6,11 @@ import { useRouter, usePathname } from 'next/navigation'
 import { HomeOutlined } from '@ant-design/icons'
 
 const navOptions = [
-  { label: 'About me',    value: '/aboutMe'    },
+  { label: 'About me',    value: '/about'    },
   { label: 'Projects',      value: '/projects'      },
   { label: <HomeOutlined />, value: '/'         },
   { label: 'Experience',  value: '/experience'  },
-  { label: 'Contact Me',  value: 'mailto:jkaps11@gmail.com' },
+  { label: 'Contact Me',  value: '/contact' },
 ] as const
 
 const NavBarSelector: React.FC = () => {

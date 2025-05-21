@@ -223,7 +223,7 @@ body {
   align-items: center;
   height: 100%;
   border: 1px solid var(--tertiary);
-  border-radius: 0.5rem;
+  border-radius: 1.5rem;
   height: 48px;
   overflow: hidden;
 }
