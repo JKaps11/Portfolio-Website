@@ -45,8 +45,8 @@ export default function ExperienceDisplayer() {
         size="large"
       />
 
-      <div className="flex-1 overflow-y-auto border-2 border-white rounded-md mt-1 p-4">
-        <Timeline mode="left" style={{padding: '20px'}}>
+      <div className="flex-1 overflow-y-auto border-2 border-white rounded-md mt-1 p-4 pt-10">
+        <Timeline mode="left" style={{paddingLeft:'30px'}}>
           {data.map((exp) => (
             <Timeline.Item
               key={exp.id}

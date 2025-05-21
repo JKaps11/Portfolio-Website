@@ -6,7 +6,7 @@ interface ExperienceInstanceProps {
 
 export default function ExperienceInstance({ experience }: ExperienceInstanceProps) {
   return (
-    <div className="flex flex-col space-y-2 text-white pl-[20px]">
+    <div className="flex flex-col space-y-2 text-white pl-[30px]">
       <p className="text-sm text-gray-400 tracking-wide">{experience.date}</p>
       <p className="text-lg font-semibold leading-tight">{experience.title}</p>
       <p className="italic font-light text-gray-300">

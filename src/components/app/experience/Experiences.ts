@@ -53,6 +53,6 @@ export const MyEducation: EducationExperience[] = [
     title: "Sheehan High School",
     degree: "Diploma",
     description: "",
-    logo: "Sheehan.jpeg"
+    logo: "Sheehan.png"
   }
 ];
