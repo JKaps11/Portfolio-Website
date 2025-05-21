@@ -1,8 +1,7 @@
 // Copyright (c) 2025 Joshua Kaplan – Licensed under MIT
-import React from 'react';
-import GithubProfilePicture from '@/components/app/GithubProfilePicture';
-import { ArrowLeftOutlined, ArrowRightOutlined, DownloadOutlined, EnvironmentOutlined, GithubOutlined, LeftOutlined, LinkedinOutlined, MailOutlined, RightOutlined } from '@ant-design/icons';
-import { ArrowHintToast } from '@/components/NavigationAlert';
+import GithubProfilePicture from '@/components/app/home/GithubProfilePicture';
+import { DownloadOutlined, EnvironmentOutlined, GithubOutlined, LinkedinOutlined, MailOutlined } from '@ant-design/icons';
+import { ArrowHintToast } from '@/components/app/home/NavigationAlert';
 export default function HomePage() {
   return (
     <>

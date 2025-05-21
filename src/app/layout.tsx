@@ -7,7 +7,7 @@ import { MainLayout } from "@/components/app/MainLayout";
 
 const COLOR_PRIMARY = '#b22222';
 const COLOR_WHITE = '#ffffff';
-const COLOR_BLACK = '#000000';
+const COLOR_DARK = '#470D0D';
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -53,30 +53,21 @@ export default function RootLayout({
               headerColor: COLOR_WHITE,
               headerBg: 'transparent',
               footerBg: 'transparent',
-              footerPadding: '16px',
-            },
-            Typography: {
-              colorTextHeading: 'inherit',
-              titleMarginBottom: '18px',
-              titleMarginTop: 0,
+              footerPadding:'1rem'
             },
             Card: {
-              colorText: COLOR_BLACK,
+              colorText: COLOR_DARK,
               colorBgContainer: COLOR_WHITE,
               colorBgSolidHover: COLOR_PRIMARY,
             },
-            Carousel: {
-              colorBgContainer: COLOR_PRIMARY,
-              dotHeight: 8,
-              dotWidth: 8,
-              dotActiveWidth: 8,
+            Segmented: {
+              itemColor: COLOR_PRIMARY,
+              itemSelectedBg: COLOR_PRIMARY,
+              itemSelectedColor: COLOR_WHITE,
+              itemHoverBg: COLOR_DARK,
+              itemHoverColor: COLOR_WHITE,
+              trackBg: COLOR_WHITE,
             },
-            Button: {
-              colorBgContainer: 'transparent',
-              fontWeight: 700,
-              borderRadius: 6,
-            },
-
           }
         }}>
           <AntdRegistry>

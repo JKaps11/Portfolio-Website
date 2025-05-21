@@ -7,9 +7,9 @@ export function ArrowHintToast() {
   const [exiting, setExiting] = useState(false);
 
   useEffect(() => {
-    const showTimer = setTimeout(() => setVisible(true), 2000);
-    const exitTimer = setTimeout(() => setExiting(true), 8000);
-    const unmountTimer = setTimeout(() => setVisible(false), 8300); // match animation
+    const showTimer = setTimeout(() => setVisible(true), 1500);
+    const exitTimer = setTimeout(() => setExiting(true), 4000);
+    const unmountTimer = setTimeout(() => setVisible(false), 4300); // match animation
 
     return () => {
       clearTimeout(showTimer);

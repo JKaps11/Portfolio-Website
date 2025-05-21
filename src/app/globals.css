@@ -9,6 +9,12 @@
 
 }
 
+iconify-icon {
+  display: inline-block;
+  width: 2em;
+  height: 2em;
+}
+
 h1 {
   font-size: clamp(2.5rem, 7vw, 6rem);
   line-height: 1.1;
@@ -16,6 +22,15 @@ h1 {
   letter-spacing: -0.02em;
   text-wrap: balance;
   margin-bottom: 0.5em;
+  text-shadow: 0 1px 2px var(--secondary);
+}
+
+h2 {
+  font-size: clamp(1rem, 2vw, 3rem);
+  line-height: 1.1;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  text-wrap: balance;
   text-shadow: 0 1px 2px var(--secondary);
 }
 
