@@ -33,6 +33,15 @@ export const MyJobs: WorkExperience[] = [
 • Provided 1-on-1 debugging support and led hands-on coding sessions that increased student engagement
 • Taught Java and object-oriented programming using Minecraft Forge mods to middle and high school students`,
     logo: "/iDTech.jpg"
+  },
+  {
+    type: "work",
+    id: "job-4",
+    date: "Jun 2022 - Aug 2022",
+    title: "Crum & Forster – Glastonbury, CT",
+    position: "Intern",
+    description: ``,
+    logo: "/CrumForsterLogo.jpg"
   }
 ];
 

@@ -28,11 +28,22 @@ export interface EducationExperience extends ExperienceBase {
 export type Experience = WorkExperience | EducationExperience;
 
 export default function ExperienceDisplayer() {
-  const [mode, setMode] = useState<DisplayerMode>('Work');
-  const data = mode === 'Work' ? MyJobs : MyEducation;
+  const [mode, setMode] = useState<DisplayerMode>('Work')
+  const data = mode === 'Work' ? MyJobs : MyEducation
+  const timelineItems = data.map((exp) => ({
+    key: exp.id,
+    dot: (
+      <Avatar
+        src={exp.logo}
+        size={60}
+        style={{ backgroundColor: 'white' }}
+      />
+    ),
+    children: <ExperienceInstance experience={exp} />,
+  }))
 
   return (
-    <div className="w-full h-[70%] flex flex-col">
+    <div className="w-full max-h-[70%] flex flex-col">
       <Segmented
         options={[
           { label: 'Work', value: 'Work', icon: <SnippetsFilled /> },
@@ -46,23 +57,12 @@ export default function ExperienceDisplayer() {
       />
 
       <div className="flex-1 overflow-y-auto border-2 border-white rounded-md mt-1 p-4 pt-10">
-        <Timeline mode="left" style={{paddingLeft:'30px'}}>
-          {data.map((exp) => (
-            <Timeline.Item
-              key={exp.id}
-              dot={
-                <Avatar
-                  src={exp.logo}
-                  size={60}
-                  style={{ backgroundColor: 'white'}}
-                />
-              }
-            >
-              <ExperienceInstance experience={exp} />
-            </Timeline.Item>
-          ))}
-        </Timeline>
+        <Timeline
+          mode="left"
+          items={timelineItems}
+          style={{ paddingLeft: '30px' }}
+        />
       </div>
     </div>
-  );
+  )
 }

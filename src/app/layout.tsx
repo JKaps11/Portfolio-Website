@@ -67,7 +67,7 @@ export default function RootLayout({
               itemHoverBg: COLOR_DARK,
               itemHoverColor: COLOR_WHITE,
               trackBg: COLOR_WHITE,
-            },
+            }
           }
         }}>
           <AntdRegistry>
