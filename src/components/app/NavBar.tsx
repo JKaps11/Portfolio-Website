@@ -6,8 +6,8 @@ import { useRouter, usePathname } from 'next/navigation'
 import { HomeOutlined } from '@ant-design/icons'
 
 const navOptions = [
-  { label: 'Projects',    value: '/projects'    },
-  { label: 'Skills',      value: '/skills'      },
+  { label: 'About me',    value: '/aboutMe'    },
+  { label: 'Projects',      value: '/projects'      },
   { label: <HomeOutlined />, value: '/'         },
   { label: 'Experience',  value: '/experience'  },
   { label: 'Contact Me',  value: 'mailto:jkaps11@gmail.com' },
