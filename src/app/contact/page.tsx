@@ -1,3 +1,6 @@
+export const dynamic   = 'force-dynamic';
+export const revalidate = 0;
+
 import { ContactAlert } from "@/components/client/ClientAlert";
 import { sendEmailToSelf, ContactFormPayload } from "@/lib/email/sendEmailToYourself";
 import { revalidatePath } from "next/cache";
@@ -7,40 +10,36 @@ import { z } from "zod";
 type StatusType = "success" | "error";
 
 interface ContactPageProps {
-  searchParams?: {
-    status?: string;
-  };
+  searchParams?: { status?: string };
 }
 
 const schema = z.object({
   firstName: z.string().min(1),
-  lastName: z.string().min(1),
-  subject: z.string().min(1),
-  message: z.string().min(1),
+  lastName:  z.string().min(1),
+  subject:   z.string().min(1),
+  message:   z.string().min(1),
 });
 
 async function onSubmitForm(formData: FormData): Promise<void> {
   "use server";
-
   const data: Partial<ContactFormPayload> = {
     firstName: formData.get("firstName") as string,
-    lastName: formData.get("lastName") as string,
-    subject: formData.get("subject") as string,
-    message: formData.get("message") as string,
+    lastName:  formData.get("lastName")  as string,
+    subject:   formData.get("subject")   as string,
+    message:   formData.get("message")   as string,
   };
 
-  const result = schema.safeParse(data);
-
-  if (!result.success) {
+  // validation
+  if (!schema.safeParse(data).success) {
     return redirect("/contact?status=error");
   }
 
   try {
-    await sendEmailToSelf(result.data);
-    await revalidatePath("/app/contact");
+    await sendEmailToSelf(data as ContactFormPayload);
+    // revalidate the actual `/contact` route
+    await revalidatePath("/contact");
     return redirect("/contact?status=success");
-  } catch (err) {
-    console.error("Failed to send email:", err);
+  } catch {
     return redirect("/contact?status=error");
   }
 }
