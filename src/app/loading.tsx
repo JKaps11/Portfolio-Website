@@ -1,10 +1,9 @@
-import Spin from '@/components/client/Spin';
-import { Flex } from '@/components/client/Flex';
+import { Flex, Spin } from "antd";
 
 export default function Loading() {
   return (
     <Flex align="center" justify="center" className="h-full w-full">
-      <Spin spinning={true} />
+      <Spin size="large" spinning={true} />
     </Flex>
   );
-} 
+}

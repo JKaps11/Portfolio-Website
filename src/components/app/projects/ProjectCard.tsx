@@ -23,7 +23,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
     <>
       <div
         onClick={() => setIsModalVisible(true)}
-        className="bg-white rounded-xl shadow-md p-6 flex flex-col justify-between h-full cursor-pointer transition duration-200 hover:shadow-2xl hover:-translate-y-1"
+        className="bg-white rounded-xl p-6 flex flex-col justify-between h-full cursor-pointer transition-transform duration-200 hover:scale-[1.02] hover:shadow-2xl"
       >
         <div>
           <h3 className="text-xl font-bold text-gray-900 mb-2 break-words">

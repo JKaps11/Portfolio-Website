@@ -1,33 +1,27 @@
 // Copyright (c) 2025 Joshua Kaplan – Licensed under MIT
 import { DownloadOutlined, EnvironmentOutlined, GithubOutlined, LinkedinOutlined, MailOutlined } from '@ant-design/icons';
-import { Avatar } from '@/components/client/Avatar';
 import { Alert } from '@/components/common/Alert';
+import Image from 'next/image';
 export default function HomePage() {
   return (
     <>
       <div className="w-full h-full flex flex-col justify-center items-center">
         <div className="p-12 w-2/3 h-1/2 flex flex-row items-center justify-between">
-            <Avatar
-                  style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    border: '10px solid #fff',
-                    // boxShadow: '0 0 20px rgba(255, 255, 255, 0.6)',
-                    borderRadius: '50%',
-                    width: '25rem',
-                    height: '25rem',
-                    maxWidth: '25rem',
-                    maxHeight: '25rem',
-                    minHeight: '5rem',
-                    minWidth: '5rem',
-                    overflow: 'hidden',
-                    boxShadow: '0 0 20px rgba(255, 255, 255, 0.3)',
-                    transform: 'scale(1.02)',
-                    transition: 'all 0.3s ease',
-                  }}
-                  src={'/josh.jpg'}
-                />
+            <div className="relative w-[25rem] h-[25rem] min-w-[5rem] min-h-[5rem] max-w-[25rem] max-h-[25rem] rounded-full border-[10px] border-white overflow-hidden shadow-md transition-all duration-300"
+                style={{
+                  boxShadow: '0 0 20px rgba(255, 255, 255, 0.3)',
+                  transform: 'scale(1.02)',
+                }}
+            >
+              <Image
+                src="/josh.jpg"
+                alt="Joshua Kaplan"
+                fill
+                className="object-cover rounded-full"
+                priority
+              />
+            </div>
+
             <div className='subtitle'>
               <h1>
                 Joshua Kaplan
