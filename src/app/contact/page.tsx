@@ -1,64 +1,57 @@
-export const dynamic   = 'force-dynamic';
-export const revalidate = 0;
+export const dynamic = 'force-dynamic'; // disables next caching
+export const revalidate = 0;            // disables caching for endpoint
 
 import { ContactAlert } from "@/components/client/ClientAlert";
-import { sendEmailToSelf, ContactFormPayload } from "@/lib/email/sendEmailToYourself";
+import { sendEmailToSelf } from "@/lib/email/sendEmailToYourself";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { z } from "zod";
 
-type StatusType = "success" | "error";
-
-interface ContactPageProps {
-  searchParams?: { status?: string };
-}
-
+// Zod validation schema
 const schema = z.object({
   firstName: z.string().min(1),
-  lastName:  z.string().min(1),
-  subject:   z.string().min(1),
-  message:   z.string().min(1),
+  lastName: z.string().min(1),
+  subject: z.string().min(1),
+  message: z.string().min(1),
 });
 
+// Server action
 async function onSubmitForm(formData: FormData): Promise<void> {
   "use server";
-  const data: Partial<ContactFormPayload> = {
-    firstName: formData.get("firstName") as string,
-    lastName:  formData.get("lastName")  as string,
-    subject:   formData.get("subject")   as string,
-    message:   formData.get("message")   as string,
-  };
 
-  // validation
-  if (!schema.safeParse(data).success) {
+  const parsed = schema.safeParse({
+    firstName: formData.get("firstName"),
+    lastName: formData.get("lastName"),
+    subject: formData.get("subject"),
+    message: formData.get("message"),
+  });
+
+  if (!parsed.success) {
     return redirect("/contact?status=error");
   }
 
-  try {
-    await sendEmailToSelf(data as ContactFormPayload);
-    // revalidate the actual `/contact` route
-    await revalidatePath("/contact");
-    return redirect("/contact?status=success");
-  } catch {
-    return redirect("/contact?status=error");
-  }
+  await sendEmailToSelf(parsed.data);
+  revalidatePath("/contact");
+  redirect("/contact?status=success");
 }
 
-export default function ContactPage({ searchParams }: ContactPageProps) {
-  const rawStatus = searchParams?.status;
-  const status: StatusType | undefined =
-    rawStatus === "success" || rawStatus === "error" ? rawStatus : undefined;
+export default async function ContactPage({ searchParams }: { searchParams?: { status?: string } }) {
+  
+  const resolvedParams = await searchParams;
+  const rawStatus = resolvedParams?.status;
+  const status = rawStatus === "success" || rawStatus === "error" ? rawStatus : undefined;
 
   return (
-    <div className="flex flex-col items-center justify-start w-full h-full py-10 px-4 sm:px-8">
+    <div className="flex flex-col items-center justify-center w-full h-full px-4 sm:px-8">
       <ContactAlert status={status} />
 
       <form
         action={onSubmitForm}
         className="w-full max-w-2xl bg-white rounded-2xl shadow-lg p-8 space-y-6"
       >
-        <h2 className="text-black text-center">Can't wait to hear from you!</h2>
-
+        <h3 className="text-center text-3xl font-bold text-neutral-900 mb-6">
+          Can't wait to hear from you!
+        </h3>
         <div className="flex flex-col sm:flex-row gap-4">
           <div className="flex-1">
             <label className="block text-sm font-medium text-gray-800 mb-1">First Name</label>

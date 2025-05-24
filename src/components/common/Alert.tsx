@@ -13,7 +13,7 @@ export interface AlertProps {
 
 export function Alert({
   message,
-  color = 'text-white',
+  color = '#b22222',
   visible: controlledVisible,
   delayMs = 1500,
   durationMs = 4000,
@@ -43,7 +43,7 @@ export function Alert({
   return createPortal(
     <div className={`arrow-key-alert-container ${exiting ? 'slide-exit' : ''}`}>
       <div className="arrow-key-alert-wrapper">
-        <p className={`arrow-key-alert ${color}`}>{message}</p>
+        <p style={{color:color}}className={`arrow-key-alert`}>{message}</p>
       </div>
     </div>,
     document.body

@@ -1,22 +1,20 @@
-import PostProjects from '@/components/app/projects/PostProjects';
-import { Suspense } from 'react';
-import { Spin, Flex } from 'antd';
-import { LoadingOutlined } from '@ant-design/icons';
-
-const loadingIcon = <LoadingOutlined style={{ fontSize: 48 }} spin />;
+import ProjectCard from '@/components/app/projects/ProjectCard';
+import { Projects } from '@/components/app/projects/Projects';
+import Divider from '@/components/common/Divider';
 
 export default function ProjectPage() {
   return (
-    <section id="projects" className="flex-1 w-full h-full">
+    <div id="projects" className="flex flex-col w-full h-full gap-4">
       <h2>Projects</h2>
-      <Suspense fallback={
-        <Flex align="center" justify="center" className="min-h-[600px]">
-          <Spin indicator={loadingIcon} />
-        </Flex>
-      }>
-        <PostProjects />
-      </Suspense>
-    </section>
+      <Divider/>
+        <div className="h-full overflow-y-auto pr-3">
+          <div className="my-4 grid gap-8 sm:grid-cols-2 lg:grid-cols-3 w-full">
+            {Projects.map((project) => (
+              <ProjectCard key={project.id} project={project}/>
+            ))}
+          </div>
+        </div>
+      </div>  
   );
 }
     

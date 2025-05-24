@@ -3,7 +3,7 @@
 :root {
   /* Theme colors */
   --primary: #b22222;
-  --secondary: #470D0D;
+  --secondary: black;
   --tertiary: #ffffff;
   --homepage-gradient: radial-gradient(circle at 50% 50%, var(--primary) 0%, var(--secondary) 100%);
 
@@ -56,7 +56,6 @@ h2 {
 
 .arrow-key-alert {
   background-color: var(--tertiary);
-  color: var(--primary);
   border-radius: 2rem;
   box-shadow: 0 0.625rem 1.25rem rgba(0, 0, 0, 0.1);
   text-align: center;

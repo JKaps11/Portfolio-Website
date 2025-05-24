@@ -5,7 +5,6 @@ import "./globals.css";
 import { ConfigProvider } from "antd";
 import { MainLayout } from "@/components/app/MainLayout";
 
-const COLOR_PRIMARY = '#b22222';
 const COLOR_WHITE = '#ffffff';
 const COLOR_DARK = '#470D0D';
 
@@ -36,12 +35,11 @@ export default function RootLayout({
       >
         <ConfigProvider theme={{
           token: {
-            colorPrimary: COLOR_PRIMARY,
             colorText: COLOR_WHITE,
             colorTextHeading: COLOR_WHITE,
             colorBgLayout: 'transparent',
             colorBgContainer: 'transparent',
-            colorLink: COLOR_WHITE,
+            colorLink: 'black'
           },
           components: {
             Spin: {
@@ -55,19 +53,14 @@ export default function RootLayout({
               footerBg: 'transparent',
               footerPadding:'1rem'
             },
-            Card: {
-              colorText: COLOR_DARK,
-              colorBgContainer: COLOR_WHITE,
-              colorBgSolidHover: COLOR_PRIMARY,
-            },
             Segmented: {
-              itemColor: COLOR_PRIMARY,
-              itemSelectedBg: COLOR_PRIMARY,
+              itemColor: COLOR_DARK,
+              itemSelectedBg: COLOR_DARK,
               itemSelectedColor: COLOR_WHITE,
-              itemHoverBg: COLOR_DARK,
+              itemHoverBg: '#6a1a1a',
               itemHoverColor: COLOR_WHITE,
               trackBg: COLOR_WHITE,
-            }
+            },
           }
         }}>
           <AntdRegistry>

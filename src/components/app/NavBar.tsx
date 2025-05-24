@@ -6,7 +6,7 @@ import { useRouter, usePathname } from 'next/navigation'
 import { HomeOutlined } from '@ant-design/icons'
 
 const navOptions = [
-  { label: 'About me',    value: '/about'    },
+  { label: 'About Me',    value: '/about'    },
   { label: 'Projects',      value: '/projects'      },
   { label: <HomeOutlined />, value: '/'         },
   { label: 'Experience',  value: '/experience'  },
