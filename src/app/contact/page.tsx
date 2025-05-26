@@ -35,7 +35,7 @@ async function onSubmitForm(formData: FormData): Promise<void> {
   redirect("/contact?status=success");
 }
 
-export default async function ContactPage({ searchParams }: { searchParams?: { status?: string } }) {
+export default async function ContactPage({ searchParams }: { searchParams?: Promise<{ status?: string }> }) {
   
   const resolvedParams = await searchParams;
   const rawStatus = resolvedParams?.status;

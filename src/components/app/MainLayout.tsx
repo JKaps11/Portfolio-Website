@@ -1,4 +1,3 @@
-import { GithubOutlined, LinkedinOutlined, MailOutlined} from '@ant-design/icons';
 import { AntLayoutClient } from '@/components/client/Layout';
 import { FadeIn } from '@/components/client/FadeIn';
 

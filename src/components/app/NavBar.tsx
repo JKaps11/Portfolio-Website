@@ -1,15 +1,15 @@
 // Copyright (c) 2025 Joshua Kaplan – Licensed under MIT
 'use client'
 
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect, useRef, useCallback } from 'react'
 import { useRouter, usePathname } from 'next/navigation'
 import { HomeOutlined } from '@ant-design/icons'
 
 const navOptions = [
-  { label: 'About Me',    value: '/about'    },
-  { label: 'Projects',      value: '/projects'      },
-  { label: <HomeOutlined />, value: '/'         },
-  { label: 'Experience',  value: '/experience'  },
+  { label: 'About Me',    value: '/about' },
+  { label: 'Projects',    value: '/projects' },
+  { label: <HomeOutlined />, value: '/' },
+  { label: 'Experience',  value: '/experience' },
   { label: 'Contact Me',  value: '/contact' },
 ] as const
 
@@ -20,10 +20,9 @@ const NavBarSelector: React.FC = () => {
     return navOptions.findIndex(opt => opt.value === pathname)
   })
   const homeRef = useRef<HTMLButtonElement>(null)
-  const [lastNav, setLastNav] = useState(0);
-  const NAV_THROTTLE = 300; // ms
+  const [lastNav, setLastNav] = useState(0)
+  const NAV_THROTTLE = 300 // ms
 
-  // Update activeIndex when pathname changes
   useEffect(() => {
     const newIndex = navOptions.findIndex(opt => opt.value === pathname)
     if (newIndex !== -1) {
@@ -31,7 +30,20 @@ const NavBarSelector: React.FC = () => {
     }
   }, [pathname])
 
-  // Handle keyboard navigation
+  const handleNavigation = useCallback((index: number) => {
+    const now = Date.now()
+    if (now - lastNav < NAV_THROTTLE) return
+    setLastNav(now)
+
+    setActiveIndex(index)
+    const option = navOptions[index]
+    if (option.value.startsWith('mailto:')) {
+      window.location.href = option.value
+    } else {
+      router.push(option.value)
+    }
+  }, [lastNav, router])
+
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'ArrowLeft' && activeIndex > 0) {
@@ -43,21 +55,7 @@ const NavBarSelector: React.FC = () => {
 
     window.addEventListener('keydown', handleKeyDown)
     return () => window.removeEventListener('keydown', handleKeyDown)
-  }, [activeIndex])
-
-  const handleNavigation = (index: number) => {
-    const now = Date.now();
-    if (now - lastNav < NAV_THROTTLE) return;
-    setLastNav(now);
-
-    setActiveIndex(index);
-    const option = navOptions[index];
-    if (option.value.startsWith('mailto:')) {
-      window.location.href = option.value;
-    } else {
-      router.push(option.value);
-    }
-  };
+  }, [activeIndex, handleNavigation])
 
   return (
     <nav className="custom-nav-bar">

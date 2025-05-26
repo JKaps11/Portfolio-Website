@@ -28,7 +28,7 @@ export default function AboutPage() {
         <br />
 
         <p>
-          When I'm not programming, I like to play sports, read, study history and philosophy, and cook. If you would like to meet me, send me an email, and we can schedule a meeting!
+          When I'm not programming, I like to play sports, read, study history and philosophy, and cook. If you would like to meet, send me an email, and we can schedule a meeting!
         </p>
       </div>
     </div>
