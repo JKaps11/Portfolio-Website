@@ -88,7 +88,7 @@ const ProjectExtras: { id: string; videoUrl: string; summary: string }[] = [
   },
   {
     id: 'course-registration',
-    videoUrl: 'https://youtu.be/VSPCmfE24IE',
+    videoUrl: 'https://www.youtube.com/watch?v=VSPCmfE24IE',
     summary: '',
   },
   {

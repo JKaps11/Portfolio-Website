@@ -2,26 +2,35 @@ import Image from 'next/image';
 
 export default function AboutPage() {
   return (
-    <div className="w-full max-w-5xl mx-auto px-6 py-12 space-y-16">
-      {/* Hero Section */}
-      <section className="flex flex-col md:flex-row items-center gap-10">
-        <div className="relative w-48 h-48 rounded-full border-[6px] border-white shadow-lg overflow-hidden">
+    <div className="w-full max-w-3xl mx-auto px-6 py-16">
+      <div className="text-white text-lg leading-relaxed relative">
+        {/* Avatar floated left */}
+        <div className="relative float-left w-0 h-60 md:w-60 md:h-60 rounded-full border-4 border-white shadow-lg overflow-hidden mr-6 mb-4">
           <Image
-            src="/josh.jpg"
+            src="/josh2.jpg"
             alt="Joshua Kaplan"
             fill
             className="object-cover"
             priority
           />
         </div>
-        <div className="flex-1 space-y-4">
-          <p className="text-lg leading-snug">
-            Full-stack developer focused on creating clean, performant, and intuitive web and mobile apps.
-            I love solving hard problems and building tools that actually help people.
-          </p>
-          
-        </div>
-      </section>
+
+        <p>
+          Hi, my name is Joshua Kaplan. I'm a fullstack developer who started coding at the age of 12 and stuck with it because I love exploring the complexities of computers.
+        </p>
+
+        <br />
+
+        <p>
+          I recently graduated from the University of Connecticut with a degree in computer science and engineering, concentrating in software engineering. Through my projects, I've become proficient in web development—specializing in React, TypeScript, and Python.
+        </p>
+
+        <br />
+
+        <p>
+          When I'm not programming, I like to play sports, read, study history and philosophy, and cook. If you would like to meet me, send me an email, and we can schedule a meeting!
+        </p>
+      </div>
     </div>
   );
 }
