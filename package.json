@@ -11,6 +11,7 @@
   "dependencies": {
     "@ant-design/nextjs-registry": "^1.0.2",
     "antd": "^5.25.1",
+    "babel-plugin-react-compiler": "^19.1.0-rc.2",
     "next": "15.3.2",
     "nodemailer": "^7.0.3",
     "react": "^19.0.0",

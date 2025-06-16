@@ -3,6 +3,11 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import NavBarSelector from "@/components/app/NavBar";
 import { FadeIn } from "@/components/client/FadeIn";
+import { AntdRegistry } from "@ant-design/nextjs-registry";
+import { ConfigProvider } from "antd";
+
+const COLOR_WHITE = '#ffffff';
+const COLOR_DARK = '#470D0D';
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -35,7 +40,34 @@ export default function RootLayout({
         </header>
 
         <main className="flex-grow">
-          <FadeIn>{children}</FadeIn>
+           <ConfigProvider theme={{
+          token: {
+            colorText: COLOR_WHITE,
+            colorTextHeading: COLOR_WHITE,
+            colorBgLayout: 'transparent',
+            colorBgContainer: 'transparent',
+            colorLink: 'black'
+          },
+          components: {
+            Spin: {
+              colorPrimary: COLOR_WHITE,
+              colorPrimaryActive: COLOR_WHITE,
+              colorPrimaryHover: COLOR_WHITE,
+            },
+            Segmented: {
+              itemColor: COLOR_DARK,
+              itemSelectedBg: COLOR_DARK,
+              itemSelectedColor: COLOR_WHITE,
+              itemHoverBg: '#6a1a1a',
+              itemHoverColor: COLOR_WHITE,
+              trackBg: COLOR_WHITE,
+            },
+          }
+        }}>
+          <AntdRegistry>
+            <FadeIn>{children}</FadeIn>
+          </AntdRegistry>
+        </ConfigProvider>
         </main>
 
         <footer className="w-full text-center">

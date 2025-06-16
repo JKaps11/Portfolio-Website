@@ -9,7 +9,6 @@ const fetchIconSvg = cache(async (slug: string) => {
   const res = await fetch(`https://cdn.simpleicons.org/${slug}`, {
     headers: { Accept: 'image/svg+xml' },
   });
-  if (!res.ok) throw new Error(`Failed to fetch icon: ${slug}`);
   return await res.text();
 });
 
