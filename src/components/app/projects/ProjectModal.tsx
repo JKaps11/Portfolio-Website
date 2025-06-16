@@ -1,8 +1,8 @@
-'use client';
-import { Modal } from 'antd';
-import TechTags, { Technology } from './TechTags';
-import { DetailedProjects } from './Projects';
-import { GithubOutlined } from '@ant-design/icons';
+"use client";
+import { Modal } from "antd";
+import TechTags, { Technology } from "./TechTags";
+import { DetailedProjects } from "./Projects";
+import { GithubOutlined } from "@ant-design/icons";
 
 export interface ProjectDetails {
   projectId: string;
@@ -18,9 +18,12 @@ interface ProjectModalProps {
   projectId: string;
 }
 
-
-export default function ProjectModal({ isOpen, onClose, projectId }: ProjectModalProps) {
-  const project = DetailedProjects.find(p => p.id === projectId);
+export default function ProjectModal({
+  isOpen,
+  onClose,
+  projectId,
+}: ProjectModalProps) {
+  const project = DetailedProjects.find((p) => p.id === projectId);
   if (!project) return null;
   return (
     <Modal
@@ -35,7 +38,7 @@ export default function ProjectModal({ isOpen, onClose, projectId }: ProjectModa
         {project.videoUrl && (
           <div className="w-full aspect-video rounded-lg overflow-hidden">
             <iframe
-              src={project.videoUrl.replace('watch?v=', 'embed/')}
+              src={project.videoUrl.replace("watch?v=", "embed/")}
               title={project.name}
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen
@@ -53,7 +56,7 @@ export default function ProjectModal({ isOpen, onClose, projectId }: ProjectModa
             className="text-black hover:text-gray-800 transition-colors"
             aria-label="View on GitHub"
           >
-            <GithubOutlined style={{ fontSize: '2rem' }} />
+            <GithubOutlined style={{ fontSize: "2rem" }} />
           </a>
         </div>
         <p className="text-sm text-gray-700 whitespace-pre-line">
@@ -63,7 +66,6 @@ export default function ProjectModal({ isOpen, onClose, projectId }: ProjectModa
           {project.summary}
         </p>
       </div>
-
     </Modal>
   );
 }

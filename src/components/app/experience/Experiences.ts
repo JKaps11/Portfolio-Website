@@ -3,6 +3,15 @@ import { EducationExperience, WorkExperience } from "./ExperienceDisplayer";
 export const MyJobs: WorkExperience[] = [
   {
     type: "work",
+    id: "job-0",
+    date: "June 2025 - Present",
+    title: "Crum & Forster",
+    position: "Associate Software Developer",
+    description: "",
+    logo :"/CrumForsterLogo.jpg"
+  },
+  {
+    type: "work",
     id: "job-1",
     date: "Mar 2025 - Present",
     title: "Syndata",

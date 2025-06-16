@@ -46,14 +46,14 @@ export const Projects: Project[] = [
     html_url: "https://github.com/JKaps11/Notion-Integration",
     technologies: ["TypeScript", "Node.js"],
   },
-  {
-    id: "course-registration",
-    name: "Course Registration",
-    description:
-      "Front end of the course registration project in Vue.js. The back end was implemented in AWS.",
-    html_url: "https://github.com/JKaps11/Course-Registration",
-    technologies: ["Vue", "JavaScript"],
-  },
+  // {
+  //   id: "course-registration",
+  //   name: "Course Registration",
+  //   description:
+  //     "Front end of the course registration project in Vue.js. The back end was implemented in AWS.",
+  //   html_url: "https://github.com/JKaps11/Course-Registration",
+  //   technologies: ["Vue", "JavaScript"],
+  // },
   {
     id: "recipe-application",
     name: "Recipe Application",
@@ -86,11 +86,11 @@ const ProjectExtras: { id: string; videoUrl: string; summary: string }[] = [
     videoUrl: '',
     summary: '',
   },
-  {
-    id: 'course-registration',
-    videoUrl: 'https://www.youtube.com/watch?v=VSPCmfE24IE',
-    summary: '',
-  },
+  // {
+  //   id: 'course-registration',
+  //   videoUrl: 'https://www.youtube.com/watch?v=VSPCmfE24IE',
+  //   summary: '',
+  // },
   {
     id: 'recipe-application',
     videoUrl: '',
