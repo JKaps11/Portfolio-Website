@@ -33,6 +33,7 @@ export function ContactAlert({ status }: ContactAlertProps) {
   return (
     <Alert
       message={message}
+      allowMobile
       color={color}
       visible={visible}
       delayMs={500}

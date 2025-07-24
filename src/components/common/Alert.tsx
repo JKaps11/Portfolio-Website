@@ -1,10 +1,12 @@
 'use client';
 
+import { useIsMobile } from '@/hooks/useIsMobile';
 import { useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
 
 export interface AlertProps {
   message: string;
+  allowMobile?: boolean;
   color?: string;
   visible?: boolean;
   delayMs?: number;
@@ -13,11 +15,15 @@ export interface AlertProps {
 
 export function Alert({
   message,
+  allowMobile = false,
   color = '#b22222',
   visible: controlledVisible,
   delayMs = 1500,
   durationMs = 4000,
 }: AlertProps) {
+  const isMobile = useIsMobile()
+  if (isMobile) return null
+
   const [autoVisible, setAutoVisible] = useState(false);
   const [exiting, setExiting] = useState(false);
 
