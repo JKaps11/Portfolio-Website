@@ -5,8 +5,8 @@ export default function AboutPage() {
     <div className="w-full max-w-3xl mx-auto px-6 py-16">
       <div className="text-white text-lg leading-relaxed relative">
         {/* Avatar floated left */}
-        <div className="relative float-left w-0 h-60 md:w-60 md:h-60 rounded-full border-4 border-white shadow-lg overflow-hidden mr-6 mb-4">
-          <Image
+        <div className="hidden md:block relative float-left w-0 h-60 md:w-60 md:h-60 rounded-full border-4 border-white shadow-lg overflow-hidden mr-6 mb-4">
+         <Image
             src="/josh2.jpg"
             alt="Joshua Kaplan"
             fill

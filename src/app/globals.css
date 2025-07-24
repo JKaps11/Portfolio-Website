@@ -256,7 +256,6 @@ body {
   align-items: center;
   justify-content: center;
   height: 100%;
-  min-width: 120px;
   border: none;
   outline: none;
   cursor: pointer;
