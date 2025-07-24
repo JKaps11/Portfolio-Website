@@ -43,12 +43,13 @@ export function Alert({
     };
   }, [isControlled, delayMs, durationMs, message]);
 
-  if (!isVisible || !message || isMobile) return null;
+  if (!isVisible || !message) return null;
+  if (!allowMobile && isMobile) return null;
 
   return createPortal(
     <div className={`arrow-key-alert-container ${exiting ? 'slide-exit' : ''}`}>
       <div className="arrow-key-alert-wrapper">
-        <p style={{color:color}}className={`arrow-key-alert`}>{message}</p>
+        <p style={{ color: color }} className={`arrow-key-alert`}>{message}</p>
       </div>
     </div>,
     document.body
