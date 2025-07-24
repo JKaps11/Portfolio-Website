@@ -22,7 +22,6 @@ export function Alert({
   durationMs = 4000,
 }: AlertProps) {
   const isMobile = useIsMobile()
-  if (isMobile) return null
 
   const [autoVisible, setAutoVisible] = useState(false);
   const [exiting, setExiting] = useState(false);
@@ -44,7 +43,7 @@ export function Alert({
     };
   }, [isControlled, delayMs, durationMs, message]);
 
-  if (!isVisible || !message) return null;
+  if (!isVisible || !message || isMobile) return null;
 
   return createPortal(
     <div className={`arrow-key-alert-container ${exiting ? 'slide-exit' : ''}`}>
