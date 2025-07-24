@@ -3,9 +3,10 @@
 
 import { useState, useEffect, useRef, useCallback } from 'react'
 import { useRouter, usePathname } from 'next/navigation'
-import { HomeOutlined } from '@ant-design/icons'
+import { HomeOutlined, MailOutlined, ProjectOutlined, SolutionOutlined, UserOutlined } from '@ant-design/icons'
+import { useIsMobile } from '@/hooks/useIsMobile'
 
-const navOptions = [
+const desktopNavOptions = [
   { label: 'About Me',    value: '/about' },
   { label: 'Projects',    value: '/projects' },
   { label: <HomeOutlined />, value: '/' },
@@ -13,7 +14,18 @@ const navOptions = [
   { label: 'Contact Me',  value: '/contact' },
 ] as const
 
+const mobileNavOptions = [
+  { label: <UserOutlined/>,    value: '/about' },
+  { label: <ProjectOutlined/>,    value: '/projects' },
+  { label: <HomeOutlined />, value: '/' },
+  { label: <SolutionOutlined/>,  value: '/experience' },
+  { label: <MailOutlined/>, value: 'contact' },
+] as const
+
 const NavBarSelector: React.FC = () => {
+  const isMobile = useIsMobile(600)
+  const navOptions = isMobile ? mobileNavOptions : desktopNavOptions
+  
   const router = useRouter()
   const pathname = usePathname()
   const [activeIndex, setActiveIndex] = useState<number>(() => {
@@ -57,6 +69,7 @@ const NavBarSelector: React.FC = () => {
     return () => window.removeEventListener('keydown', handleKeyDown)
   }, [activeIndex, handleNavigation])
 
+
   return (
     <nav className="custom-nav-bar">
       <div className="custom-nav-inner">
@@ -86,6 +99,7 @@ const NavBarSelector: React.FC = () => {
           {navOptions.slice(3).map((opt, idx) => (
             <button
               key={opt.value}
+              style={{minWidth: isMobile ? '0px' : '120px'}}
               className={`custom-nav-btn${activeIndex === idx + 3 ? ' active' : ''}`}
               onClick={() => handleNavigation(idx + 3)}
             >
