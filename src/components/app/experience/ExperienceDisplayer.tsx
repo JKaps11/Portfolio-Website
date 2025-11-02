@@ -1,11 +1,13 @@
 'use client'
-import {BookFilled, SnippetsFilled} from '@ant-design/icons';
-import { Avatar, Segmented, Timeline } from "antd"
 import { useState } from 'react';
 import { MyJobs, MyEducation } from './Experiences';
 import ExperienceInstance from './ExperienceInstance';
+import { ToggleGroup, ToggleGroupItem } from '@/components/ui/toggle-group';
+import { Briefcase, GraduationCap } from 'lucide-react';
+import { Avatar } from '@/components/ui/avatar';
+import { AvatarImage } from '@radix-ui/react-avatar';
 
-type DisplayerMode = "Work" | "Education"
+type DisplayerMode = "work" | "education"
 
 interface ExperienceBase {
   id: string;
@@ -28,40 +30,28 @@ export interface EducationExperience extends ExperienceBase {
 export type Experience = WorkExperience | EducationExperience;
 
 export default function ExperienceDisplayer() {
-  const [mode, setMode] = useState<DisplayerMode>('Work')
-  const data = mode === 'Work' ? MyJobs : MyEducation
-  const timelineItems = data.map((exp) => ({
-    key: exp.id,
-    dot: (
-      <Avatar
-        src={exp.logo}
-        size={60}
-        style={{ backgroundColor: 'white' }}
-      />
-    ),
-    children: <ExperienceInstance experience={exp} />,
-  }))
+  const [mode, setMode] = useState<DisplayerMode>('work')
 
   return (
-    <div className="w-full max-h-[70%] flex flex-col">
-      <Segmented
-        options={[
-          { label: 'Work', value: 'Work', icon: <SnippetsFilled /> },
-          { label: 'Education', value: 'Education', icon: <BookFilled /> },
-        ]}
-        style={{ border: '2px solid white' }}
-        value={mode}
-        onChange={setMode}
-        block
-        size="large"
-      />
+    <div className="w-full flex flex-col">
+      <ToggleGroup defaultValue='work' onValueChange={(value) => setMode(value as DisplayerMode)} type='single' variant='outline' size="lg" className='w-full'>
+        <ToggleGroupItem value='work' aria-label='Toggle work'>
+          <Briefcase onClick={() => setMode('work')} />
+        </ToggleGroupItem>
+        <ToggleGroupItem value='education' aria-label='Toggle education'>
+          <GraduationCap onClick={() => setMode('education')} />
+        </ToggleGroupItem>
+      </ToggleGroup>
+      <div className='flex flex-col w-full gap-8'>
+        {(mode === 'work' ? MyJobs : MyEducation).map((exp) => (
+          <div key={exp.id} className='flex items-center'>
+            <Avatar>
+              <AvatarImage height={550} width={550} src={exp.logo} />
+            </Avatar>
 
-      <div className="flex-1 overflow-y-auto border-2 border-white rounded-md mt-1 p-4 pt-10">
-        <Timeline
-          mode="left"
-          items={timelineItems}
-          style={{ paddingLeft: '30px' }}
-        />
+            <ExperienceInstance experience={exp} />
+          </div>
+        ))}
       </div>
     </div>
   )

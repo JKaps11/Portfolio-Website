@@ -9,5 +9,5 @@ export const Technologies: TechIconProps[] = [
   { slug: 'python', label: 'Python' },
   { slug: 'fastapi', label: 'FastAPI' },
   { slug: 'html5', label: 'HTML5' },
-  { slug: 'css3', label: 'CSS3' },
+  // { slug: 'css3', label: 'CSS3' },
 ];

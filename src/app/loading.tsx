@@ -1,9 +1,9 @@
-import { Flex, Spin } from "antd";
+import { Spinner } from "@/components/ui/spinner";
 
 export default function Loading() {
   return (
-    <Flex align="center" justify="center" className="h-full w-full">
-      <Spin size="large" spinning={true} />
-    </Flex>
+    <div className="w-full h-full flex justify-center items-center">
+      <Spinner />
+    </div>
   );
 }
