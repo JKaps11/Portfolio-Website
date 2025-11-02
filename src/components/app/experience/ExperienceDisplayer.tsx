@@ -37,12 +37,14 @@ export default function ExperienceDisplayer() {
       <ToggleGroup defaultValue='work' onValueChange={(value) => setMode(value as DisplayerMode)} type='single' variant='outline' size="lg" className='w-full'>
         <ToggleGroupItem value='work' aria-label='Toggle work'>
           <Briefcase onClick={() => setMode('work')} />
+          <p>Work</p>
         </ToggleGroupItem>
         <ToggleGroupItem value='education' aria-label='Toggle education'>
           <GraduationCap onClick={() => setMode('education')} />
+          <p>Education </p>
         </ToggleGroupItem>
       </ToggleGroup>
-      <div className='flex flex-col w-full gap-8'>
+      <div className='flex flex-col w-full gap-8 mt-2'>
         {(mode === 'work' ? MyJobs : MyEducation).map((exp) => (
           <div key={exp.id} className='flex items-center'>
             <Avatar>

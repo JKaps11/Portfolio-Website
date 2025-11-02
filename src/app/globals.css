@@ -11,7 +11,7 @@ iconify-icon {
 }
 
 h1 {
-  font-size: clamp(2.5rem, 7vw, 6rem);
+  font-size: clamp(2.5rem, 4rem, 6rem);
   line-height: 1.1;
   font-weight: 700;
   letter-spacing: -0.02em;
@@ -57,9 +57,6 @@ h2 {
 .subtitle {
   font-size: clamp(1rem, 2vw, 1.25rem);
   font-weight: 500;
-  display: flex;
-  flex-direction: column;
-  align-items: start;
   gap: 0.25rem;
 }
 
@@ -70,7 +67,7 @@ h2 {
   font-size: 0.95em;
 }
 
-:root {
+.dark {
   --background: oklch(1.0000 0 0);
   --foreground: oklch(0.3211 0 0);
   --card: oklch(1.0000 0 0);
@@ -125,7 +122,7 @@ h2 {
   --spacing: 0.25rem;
 }
 
-.dark {
+:root {
   --background: oklch(0.2046 0 0);
   --foreground: oklch(0.9219 0 0);
   --card: oklch(0.2686 0 0);

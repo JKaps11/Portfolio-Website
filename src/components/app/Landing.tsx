@@ -1,15 +1,14 @@
 import Image from 'next/image'
 import { Button } from '../ui/button'
-import { ButtonGroup } from '../ui/button-group'
-import { Mail, MapPin } from 'lucide-react'
+import { MapPin } from 'lucide-react'
 import SocialBox from './SocialBox'
 export default function LandingSection() {
     return (
-        <div className="w-full max-w-6xl flex flex-col md:flex-row items-center justify-between py-16">
+        <div className="w-full flex flex-1 my-10 justify-around items-center">
             <div
-                className="relative w-80 h-80 rounded-full border-[10px] border-white overflow-hidden shadow-md transition-all duration-300"
+                className="w-65 h-65 rounded-full border-[10px] border-white overflow-hidden shadow-md transition-all duration-300"
                 style={{
-                    boxShadow: '0 0 20px rgba(255, 255, 255, 0.3)',
+                    boxShadow: '0 0 10px rgba(255, 255, 255, 0.3)',
                     transform: 'scale(1.02)',
                 }}
             >
@@ -21,7 +20,7 @@ export default function LandingSection() {
                     priority
                 />
             </div>
-            <div className="subtitle">
+            <div className="subtitle flex flex-col">
                 <h1>Joshua Kaplan</h1>
                 <p className="leading-[1.2]">Full Stack Developer</p>
                 <p className="location flex items-center gap-2">
@@ -31,7 +30,7 @@ export default function LandingSection() {
 
                 <div className="flex justify-start items-center gap-3 my-2">
                     <a href="/Joshua_Kaplan_Resume.pdf" download="Joshua_Kaplan_Resume.pdf">
-                        <Button aria-label='Get resume'>Resume</Button>
+                        <Button size='lg' aria-label='Get resume'>Resume</Button>
                     </a>
                     <SocialBox />
                 </div>

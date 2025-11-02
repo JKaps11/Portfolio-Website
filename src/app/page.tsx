@@ -5,7 +5,7 @@ import ProjectSection from '@/components/app/projects/ProjectSection';
 
 export default function HomePage() {
   return (
-    <div className="flex-1 flex flex-col items-center justify-center px-4 sm:px-8">
+    <div className="w-[50%] flex-1 flex flex-col items-center justify-center mx-auto px-4 sm:px-8">
       <LandingSection />
       <ExperienceSection />
       <ProjectSection />
