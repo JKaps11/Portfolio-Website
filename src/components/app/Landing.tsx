@@ -1,15 +1,19 @@
-import Image from 'next/image'
-import { Button } from '../ui/button'
-import { MapPin } from 'lucide-react'
-import SocialBox from './SocialBox'
+import Image from "next/image";
+import { Button } from "../ui/button";
+import { MapPin } from "lucide-react";
+import SocialBox from "./SocialBox";
 export default function LandingSection() {
     return (
-        <div className="w-full flex flex-1 my-10 justify-around items-center">
+        <div
+            id="landing-section"
+            className="w-full flex lg:flex-row flex-col flex-1 my-12 justify-around items-center"
+        >
             <div
-                className="w-65 h-65 rounded-full border-[10px] border-white overflow-hidden shadow-md transition-all duration-300"
+                className="w-65 h-65 rounded-full border-10 overflow-hidden shadow-md transition-all duration-300"
                 style={{
-                    boxShadow: '0 0 10px rgba(255, 255, 255, 0.3)',
-                    transform: 'scale(1.02)',
+                    borderColor: "var(--color-secondary)",
+                    boxShadow: "0 0 10px rgba(255, 255, 255, 0.3)",
+                    transform: "scale(1.02)",
                 }}
             >
                 <Image
@@ -29,12 +33,17 @@ export default function LandingSection() {
                 </p>
 
                 <div className="flex justify-start items-center gap-3 my-2">
-                    <a href="/Joshua_Kaplan_Resume.pdf" download="Joshua_Kaplan_Resume.pdf">
-                        <Button size='lg' aria-label='Get resume'>Resume</Button>
+                    <a
+                        href="/Joshua_Kaplan_Resume.pdf"
+                        download="Joshua_Kaplan_Resume.pdf"
+                    >
+                        <Button size="lg" aria-label="Get resume">
+                            Resume
+                        </Button>
                     </a>
                     <SocialBox />
                 </div>
             </div>
         </div>
-    )
+    );
 }
