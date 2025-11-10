@@ -4,7 +4,10 @@ import { Separator } from "@/components/ui/separator";
 
 export default function ProjectSection() {
     return (
-        <div id="projects" className="flex flex-col w-full h-full gap-4">
+        <section
+            id="projects"
+            className="flex flex-col w-full h-full gap-4 mb-2"
+        >
             <h2>Projects</h2>
             <Separator decorative />
             {/*<div className="flex flex-col gap-4">*/}
@@ -13,6 +16,6 @@ export default function ProjectSection() {
                     <ProjectModal key={project.id} project={project} />
                 ))}
             </div>
-        </div>
+        </section>
     );
 }

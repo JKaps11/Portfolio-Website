@@ -1,11 +1,21 @@
 import Image from "next/image";
 import { Button } from "../ui/button";
 import { MapPin } from "lucide-react";
-import SocialBox from "./SocialBox";
-export default function LandingSection() {
+import fetchIconSvg from "../common/fetchIcon";
+
+const GITHUB_URL = "https://github.com/YOUR_GITHUB_USERNAME";
+const LINKEDIN_URL = "https://www.linkedin.com/in/YOUR_LINKEDIN_SLUG/";
+const EMAIL_ADDRESS = "your.email@example.com";
+
+export default async function LandingSection() {
+    const [githubIcon, linkedinIcon, emailIcon] = await Promise.all([
+        fetchIconSvg("github"),
+        fetchIconSvg("linkedin"),
+        fetchIconSvg("maildotru"), // simpleicons email-ish logo; you can swap if you prefer
+    ]);
     return (
         <div
-            id="landing-section"
+            id="contact"
             className="w-full flex lg:flex-row flex-col flex-1 my-12 justify-around items-center"
         >
             <div
@@ -41,7 +51,70 @@ export default function LandingSection() {
                             Resume
                         </Button>
                     </a>
-                    <SocialBox />
+                    <a
+                        href={GITHUB_URL}
+                        target="_blank"
+                        rel="noreferrer noopener"
+                        aria-label="Open GitHub profile"
+                    >
+                        <Button
+                            variant="ghost"
+                            size="icon"
+                            className="rounded-full"
+                        >
+                            <span
+                                className="w-5 h-5"
+                                aria-hidden
+                                dangerouslySetInnerHTML={{
+                                    __html: githubIcon,
+                                }}
+                            />
+                        </Button>
+                    </a>
+
+                    {/* LinkedIn */}
+                    <a
+                        href={LINKEDIN_URL}
+                        target="_blank"
+                        rel="noreferrer noopener"
+                        aria-label="Open LinkedIn profile"
+                    >
+                        <Button
+                            variant="ghost"
+                            size="icon"
+                            className="rounded-full"
+                        >
+                            <span
+                                className="w-5 h-5"
+                                aria-hidden
+                                dangerouslySetInnerHTML={{
+                                    __html: linkedinIcon,
+                                }}
+                            />
+                        </Button>
+                    </a>
+
+                    {/* Email */}
+                    <a
+                        href={`mailto:${EMAIL_ADDRESS}`}
+                        target="_blank"
+                        rel="noreferrer noopener"
+                        aria-label="Send me an email"
+                    >
+                        <Button
+                            variant="ghost"
+                            size="icon"
+                            className="rounded-full"
+                        >
+                            <span
+                                className="w-5 h-5"
+                                aria-hidden
+                                dangerouslySetInnerHTML={{
+                                    __html: emailIcon,
+                                }}
+                            />
+                        </Button>
+                    </a>
                 </div>
             </div>
         </div>

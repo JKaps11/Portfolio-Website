@@ -5,7 +5,7 @@ import { Separator } from "@/components/ui/separator";
 
 export default function ExperienceSection() {
     return (
-        <div
+        <section
             id="experiences"
             className="flex flex-col mx-auto gap-4 py-4 justify-start items-start w-full h-full"
         >
@@ -19,6 +19,6 @@ export default function ExperienceSection() {
                     <SkillTag key={tech.label} {...tech} />
                 ))}
             </div>
-        </div>
+        </section>
     );
 }

@@ -1,17 +1,10 @@
+import fetchIconSvg from "@/components/common/fetchIcon";
 import { Item, ItemContent } from "@/components/ui/item";
-import { cache } from "react";
 
 export interface TechIconProps {
     slug: string;
     label: string;
 }
-
-const fetchIconSvg = cache(async (slug: string) => {
-    const res = await fetch(`https://cdn.simpleicons.org/${slug}`, {
-        headers: { Accept: "image/svg+xml" },
-    });
-    return await res.text();
-});
 
 export default async function SkillTag({ slug, label }: TechIconProps) {
     const svg = await fetchIconSvg(slug);

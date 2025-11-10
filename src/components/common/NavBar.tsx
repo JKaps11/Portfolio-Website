@@ -10,9 +10,9 @@ import {
 } from "@/components/ui/navigation-menu";
 
 const NAV_ITEMS = [
+    { id: "contact", label: "Contact" },
     { id: "experiences", label: "Experiences" },
     { id: "projects", label: "Projects" },
-    { id: "contact", label: "Contact" },
 ];
 
 function useSectionSpy(ids: string[], rootMargin = "-40% 0px -50%") {
