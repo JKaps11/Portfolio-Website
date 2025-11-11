@@ -3,11 +3,6 @@
 
 @custom-variant dark (&:is(.dark *));
 
-iconify-icon {
-    display: inline-block;
-    width: 2em;
-    height: 2em;
-}
 html {
     scroll-behavior: smooth;
 }
