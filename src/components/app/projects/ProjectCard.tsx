@@ -62,7 +62,6 @@ const ProjectCard = forwardRef<HTMLDivElement, BaseProps>(
                                             target="_blank"
                                             rel="noopener noreferrer"
                                             aria-label="View on GitHub"
-                                            title="View on GitHub"
                                         >
                                             <img
                                                 src="https://cdn.simpleicons.org/github/fff?viewbox=auto&size=22"
@@ -78,7 +77,7 @@ const ProjectCard = forwardRef<HTMLDivElement, BaseProps>(
                                     </Button>
                                 </TooltipTrigger>
                                 <TooltipContent side="left">
-                                    GitHub
+                                    {project.html_url}
                                 </TooltipContent>
                             </Tooltip>
                         </TooltipProvider>
