@@ -14,12 +14,17 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="en" className="h-full w-full">
+            <head>
+                <meta charSet="utf-8" />
+                <meta httpEquiv="Content-Language" content="en" />
+                <meta
+                    name="viewport"
+                    content="width=device-width, initial-scale=1"
+                />
+            </head>
             <body className={"antialiased flex flex-col min-h-screen"}>
                 <Analytics />
-                <header className="w-full">{/* <NavBarSelector /> */}</header>
-
                 <main className="grow">{children}</main>
-
                 <footer className="w-full text-center">
                     <span>© 2025 Joshua Kaplan. Code licensed under MIT.</span>
                 </footer>
