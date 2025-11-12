@@ -1,6 +1,5 @@
 import Image from "next/image";
 import { MapPin } from "lucide-react";
-import fetchIconSvg from "@/components/common/fetchIcon";
 import { Button } from "@/components/ui/button";
 import {
     Tooltip,
@@ -13,15 +12,13 @@ const GITHUB_URL = "https://github.com/JKaps11";
 const LINKEDIN_URL = "https://www.linkedin.com/in/joshua-kaplan-a88315245";
 const EMAIL_ADDRESS = "kapsjosh11@gmail.com";
 
-const iconButtonClass = "";
-const iconSpanClass = "w-10 h-10 flex items-center justify-center";
+// const iconButtonClass = "";
+// const iconImgClass = "w-10 h-10";
+const iconBtn =
+    "group inline-flex items-center justify-center rounded-xl ring-1 ring-white/10 hover:ring-white/30 transition p-2";
+const iconImg = "size-6"; // explicit size for consistency
 
-export default async function LandingSection() {
-    const [githubIcon, linkedinIcon, emailIcon] = await Promise.all([
-        fetchIconSvg("github/fff"),
-        fetchIconSvg("linkedin"),
-        fetchIconSvg("gmail"),
-    ]);
+export default function LandingSection() {
     return (
         <div
             id="contact"
@@ -43,6 +40,7 @@ export default async function LandingSection() {
                     priority
                 />
             </div>
+
             <div className="subtitle flex flex-col">
                 <h1>Joshua Kaplan</h1>
                 <p className="leading-[1.2]">Full Stack Developer</p>
@@ -61,58 +59,67 @@ export default async function LandingSection() {
                                 Resume
                             </Button>
                         </a>
+
                         <Tooltip>
-                            <TooltipTrigger className={iconButtonClass}>
+                            <TooltipTrigger asChild>
                                 <a
                                     href={GITHUB_URL}
                                     target="_blank"
                                     rel="noreferrer noopener"
                                     aria-label="Open GitHub profile"
+                                    className={iconBtn}
                                 >
-                                    <span
-                                        className={iconSpanClass}
-                                        aria-hidden
-                                        dangerouslySetInnerHTML={{
-                                            __html: githubIcon,
-                                        }}
+                                    <Image
+                                        src="/github.svg"
+                                        alt=""
+                                        width={24}
+                                        height={24}
+                                        className={iconImg}
+                                        priority
                                     />
                                 </a>
                             </TooltipTrigger>
                             <TooltipContent>{GITHUB_URL}</TooltipContent>
                         </Tooltip>
+
                         <Tooltip>
-                            <TooltipTrigger className={iconButtonClass}>
+                            <TooltipTrigger asChild>
                                 <a
                                     href={LINKEDIN_URL}
                                     target="_blank"
                                     rel="noreferrer noopener"
                                     aria-label="Open LinkedIn profile"
+                                    className={iconBtn}
                                 >
-                                    <span
-                                        className={iconSpanClass}
-                                        aria-hidden
-                                        dangerouslySetInnerHTML={{
-                                            __html: linkedinIcon,
-                                        }}
+                                    <Image
+                                        src="/linkedin.svg"
+                                        alt=""
+                                        width={24}
+                                        height={24}
+                                        className={iconImg}
+                                        priority
                                     />
                                 </a>
                             </TooltipTrigger>
                             <TooltipContent>{LINKEDIN_URL}</TooltipContent>
                         </Tooltip>
+
                         <Tooltip>
-                            <TooltipTrigger className={iconButtonClass}>
+                            <TooltipTrigger asChild>
                                 <a
                                     href={`mailto:${EMAIL_ADDRESS}`}
                                     target="_blank"
                                     rel="noreferrer noopener"
                                     aria-label="Send me an email"
+                                    className={iconBtn}
                                 >
-                                    <span
-                                        className={iconSpanClass}
-                                        aria-hidden
-                                        dangerouslySetInnerHTML={{
-                                            __html: emailIcon,
-                                        }}
+                                    <Image
+                                        src="/gmail.svg"
+                                        alt=""
+                                        width={24}
+                                        height={24}
+                                        className={iconImg}
+                                        priority
                                     />
                                 </a>
                             </TooltipTrigger>
