@@ -12,7 +12,7 @@ export default function ExperienceSection() {
             <h2>Experience</h2>
             <Separator decorative />
             <ExperienceDisplayer />
-            <h2 className="mt-4">Tech Stack</h2>
+            <h2 className="mt-4">Technologies</h2>
             <Separator decorative />
             <div className="w-full flex flex-row flex-wrap justify-start gap-4">
                 {Technologies.map((tech) => (
