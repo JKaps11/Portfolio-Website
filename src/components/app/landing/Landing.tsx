@@ -25,7 +25,7 @@ export default function LandingSection() {
             className="w-full flex lg:flex-row flex-col flex-1 my-12 justify-around items-center"
         >
             <div
-                className="w-65 h-65 rounded-full border-10 overflow-hidden shadow-md transition-all duration-300"
+                className="relative w-65 h-65 rounded-full border-10 overflow-hidden shadow-md transition-all duration-300"
                 style={{
                     borderColor: "var(--color-secondary)",
                     boxShadow: "0 0 10px rgba(255, 255, 255, 0.3)",
@@ -36,7 +36,9 @@ export default function LandingSection() {
                     src="/josh.jpg"
                     alt="Joshua Kaplan"
                     fill
+                    quality={75}
                     className="object-cover rounded-full"
+                    sizes="60"
                     priority
                 />
             </div>
