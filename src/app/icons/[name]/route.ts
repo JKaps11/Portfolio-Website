@@ -22,11 +22,20 @@ export async function GET(
     if (!upstream.ok) return new Response("Icon not found", { status: 404 });
 
     const svg = await upstream.text();
-    return new Response(svg, {
-        headers: {
-            "Content-Type": "image/svg+xml; charset=utf-8",
-            "Cache-Control":
-                "public, max-age=0, s-maxage=31536000, stale-while-revalidate=86400",
+    // return new Response(svg, {
+    //     headers: {
+    //         "Content-Type": "image/svg+xml; charset=utf-8",
+    //         "Cache-Control":
+    //             "public, max-age=0, s-maxage=31536000, stale-while-revalidate=86400",
+    //     },
+    // });
+    return new Response(
+        `<svg width="24" height="24" xmlns="http://www.w3.org/2000/svg">
+           <rect width="24" height="24" fill="red"/>
+           <text x="2" y="14" font-size="10" fill="white">${rawName}</text>
+         </svg>`,
+        {
+            headers: { "Content-Type": "image/svg+xml" },
         },
-    });
+    );
 }
