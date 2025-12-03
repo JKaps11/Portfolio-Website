@@ -31,6 +31,14 @@ export const Projects: Project[] = [
     technologies: ["Rust"],
   },
   {
+    id: "inline-notes",
+    name: "Inline Notes Vscode Extension",
+    description:
+      "A VSCode extension that allows users to create and manage inline notes directly within their code files. Built with TypeScript and the VSCode API.",
+    html_url: "https://github.com/JKaps11/Inline-Notes",
+    technologies: ["TypeScript"]
+  },
+  {
     id: "portfolio-website",
     name: "Portfolio Website",
     description:
