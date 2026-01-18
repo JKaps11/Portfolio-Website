@@ -13,17 +13,17 @@ export const MyJobs: WorkExperience[] = [
 
         logo: "/CrumForsterLogo.jpg",
     },
-    //   {
-    //     type: "work",
-    //     id: "job-1",
-    //     date: "Mar 2025 - Present",
-    //     title: "Syndata",
-    //     position: "Developer/Owner",
-    //     description: `• Built and styled core frontend features including the Accounts page, Settings modal, and Sidebar using React, Ant Design, CSS, and Tailwind
-    // • Designed and implemented a scalable Redux schema to manage hierarchical settings data across the application
-    // • Collaborated with a small team using Jira and Slack in an Agile environment to iterate quickly on UI/UX feedback and meet sprint goals`,
-    //     logo: "Syndata.svg"
-    //   },
+      {
+        type: "work",
+        id: "job-1",
+        date: "Mar 2025 - Present",
+        title: "Syndata",
+        position: "Developer/Owner",
+        description: `• Built and styled core frontend features including the Accounts page, Settings modal, and Sidebar using React, Ant Design, CSS, and Tailwind
+    • Designed and implemented a scalable Redux schema to manage hierarchical settings data across the application
+    • Collaborated with a small team using Jira and Slack in an Agile environment to iterate quickly on UI/UX feedback and meet sprint goals`,
+        logo: "Syndata.svg"
+      },
     {
         type: "work",
         id: "job-2",
@@ -33,7 +33,7 @@ export const MyJobs: WorkExperience[] = [
         description: `• Collaborated with faculty and fellow TAs to refine curriculum and ensure student success
 • Supported 100+ students in mastering C++ and object-oriented programming through personalized instruction and debugging help
 • Held weekly office hours, created learning resources, and guided students through coding assignments`,
-        logo: "/husky.jpeg",
+        logo: "/husky.svg",
     },
     {
         type: "work",
@@ -65,7 +65,7 @@ export const MyEducation: EducationExperience[] = [
         title: "University of Connecticut",
         degree: "Bachelor of Science in Engineering, Computer Science and Engineering, Mathematics Minor",
         description: "",
-        logo: "husky.jpeg",
+        logo: "/husky.svg",
     },
     {
         type: "education",
@@ -74,6 +74,6 @@ export const MyEducation: EducationExperience[] = [
         title: "Sheehan High School",
         degree: "Diploma",
         description: "",
-        logo: "Sheehan.png",
+        logo: "/Sheehan.png",
     },
 ];

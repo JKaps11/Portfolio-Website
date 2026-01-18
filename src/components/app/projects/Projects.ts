@@ -66,7 +66,7 @@ export const Projects: Project[] = [
     id: "recipe-application",
     name: "Recipe Application",
     description:
-      "A recipe/menu creator application using the MERN stack. Features login authentication and authorization with Auth0.",
+      "A recipe creator application using the MERN stack. Features login authentication and authorization with Auth0.",
     html_url: "https://github.com/JKaps11/RecipeApplication",
     technologies: ["React", "Node.js", "Express", "MongoDB", "TypeScript"],
   },
@@ -81,6 +81,11 @@ const ProjectExtras: { id: string; videoUrl: string; summary: string }[] = [
   },
   {
     id: 'app-launcher',
+    videoUrl: '',
+    summary: '',
+  },
+  {
+    id: 'inline-notes',
     videoUrl: '',
     summary: '',
   },

@@ -4,8 +4,6 @@ import { MyJobs, MyEducation } from "./Experiences";
 import ExperienceInstance from "./ExperienceInstance";
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 import { Briefcase, GraduationCap } from "lucide-react";
-import { Avatar } from "@/components/ui/avatar";
-import { AvatarImage } from "@radix-ui/react-avatar";
 
 type DisplayerMode = "work" | "education";
 
@@ -34,45 +32,30 @@ export default function ExperienceDisplayer() {
 
     return (
         <div className="w-full flex flex-col">
-            <ToggleGroup
-                defaultValue="work"
-                onValueChange={(value) => setMode(value as DisplayerMode)}
-                type="single"
-                variant="outline"
-                size="lg"
-                className="w-full"
-            >
-                <ToggleGroupItem value="work" aria-label="Toggle work">
-                    <Briefcase onClick={() => setMode("work")} />
-                    <p>Work</p>
-                </ToggleGroupItem>
-                <ToggleGroupItem
-                    value="education"
-                    aria-label="Toggle education"
+                <ToggleGroup
+                    defaultValue="work"
+                    onValueChange={(value) => setMode(value as DisplayerMode)}
+                    type="single"
+                    variant="outline"
+                    size="lg"
+                    className="w-full"
                 >
-                    <GraduationCap onClick={() => setMode("education")} />
-                    <p>Education </p>
-                </ToggleGroupItem>
-            </ToggleGroup>
-            <div className="flex flex-col w-full gap-8 mt-4">
+                    <ToggleGroupItem className="w-1/2" value="work" aria-label="Toggle work">
+                        <Briefcase aria-hidden="true" />
+                        <p>Work</p>
+                    </ToggleGroupItem>
+                    <ToggleGroupItem
+                        className="w-1/2"
+                        value="education"
+                        aria-label="Toggle education"
+                    >
+                        <GraduationCap aria-hidden="true" />
+                        <p>Education</p>
+                    </ToggleGroupItem>
+                </ToggleGroup>
+            <div className="flex flex-col w-full gap-4 mt-6">
                 {(mode === "work" ? MyJobs : MyEducation).map((exp) => (
-                    <div key={exp.id} className="flex items-center">
-                        <div
-                            style={{
-                                backgroundColor: "var(--color-secondary)",
-                            }}
-                            className="relative  p-1 rounded-full shadow-md"
-                        >
-                            <Avatar>
-                                <AvatarImage
-                                    height={550}
-                                    width={550}
-                                    src={exp.logo}
-                                />
-                            </Avatar>
-                        </div>
-                        <ExperienceInstance experience={exp} />
-                    </div>
+                    <ExperienceInstance key={exp.id} experience={exp} />
                 ))}
             </div>
         </div>

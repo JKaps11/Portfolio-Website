@@ -12,11 +12,39 @@ const GITHUB_URL = "https://github.com/JKaps11";
 const LINKEDIN_URL = "https://www.linkedin.com/in/joshua-kaplan-a88315245";
 const EMAIL_ADDRESS = "kapsjosh11@gmail.com";
 
-// const iconButtonClass = "";
-// const iconImgClass = "w-10 h-10";
 const iconBtn =
-    "group inline-flex items-center justify-center rounded-xl ring-1 ring-white/10 hover:ring-white/30 transition p-2";
-const iconImg = "size-6"; // explicit size for consistency
+    "bg-primary group inline-flex items-center justify-center rounded-xl ring-1 ring-border hover:ring-border/80 hover:bg-primary/90 transition-colors p-2";
+
+interface IconButton {
+    link: string;
+    ariaLabel: string;
+    imgSrc: string;
+    imgSrcDark?: string;
+    tooltipText: string;
+}
+
+const iconButtons: IconButton[] = [
+    {
+        link: GITHUB_URL,
+        ariaLabel: "Open GitHub profile",
+        // imgSrc: "/githubWhite.svg",
+        imgSrc: "/githubBlack.svg",
+        tooltipText: "Github Profile",
+    },
+    {
+        link: LINKEDIN_URL,
+        ariaLabel: "Open LinkedIn profile",
+        imgSrc: "/linkedin.svg",
+        tooltipText: "LinkedIn Profile",
+    },
+    {
+        link: `mailto:${EMAIL_ADDRESS}?subject=Contact%20from%20Portfolio%20Website`,
+        ariaLabel: "Send me an email",
+        imgSrc: "/gmail.svg",
+        tooltipText: "kapsjosh11@gmail.com",
+    },
+];
+
 
 export default function LandingSection() {
     return (
@@ -24,14 +52,8 @@ export default function LandingSection() {
             id="contact"
             className="w-full flex lg:flex-row flex-col flex-1 my-12 justify-around items-center"
         >
-            <div
-                className="relative w-65 h-65 rounded-full border-10 overflow-hidden shadow-md transition-all duration-300"
-                style={{
-                    borderColor: "var(--color-secondary)",
-                    boxShadow: "0 0 10px rgba(255, 255, 255, 0.3)",
-                    transform: "scale(1.02)",
-                }}
-            >
+            <div className="relative w-65 h-65 rounded-full ring-[10px] ring-border overflow-hidden shadow-lg transition-all duration-300">
+
                 <Image
                     src="/josh.jpg"
                     alt="Joshua Kaplan"
@@ -45,9 +67,9 @@ export default function LandingSection() {
 
             <div className="subtitle flex flex-col">
                 <h1>Joshua Kaplan</h1>
-                <p className="leading-[1.2]">Full Stack Developer</p>
-                <p className="location flex items-center gap-2">
-                    <MapPin aria-hidden />
+                <p className="leading-[1.2] text-muted-foreground">Full Stack Developer</p>
+                <p className="location flex items-center gap-2 text-muted-foreground">
+                    <MapPin aria-hidden size={20} />
                     Connecticut, USA
                 </p>
 
@@ -62,71 +84,28 @@ export default function LandingSection() {
                             </Button>
                         </a>
 
-                        <Tooltip>
-                            <TooltipTrigger asChild>
-                                <a
-                                    href={GITHUB_URL}
-                                    target="_blank"
-                                    rel="noreferrer noopener"
-                                    aria-label="Open GitHub profile"
-                                    className={iconBtn}
-                                >
-                                    <Image
-                                        src="/github.svg"
-                                        alt=""
-                                        width={24}
-                                        height={24}
-                                        className={iconImg}
-                                        priority
-                                    />
-                                </a>
-                            </TooltipTrigger>
-                            <TooltipContent>{GITHUB_URL}</TooltipContent>
-                        </Tooltip>
-
-                        <Tooltip>
-                            <TooltipTrigger asChild>
-                                <a
-                                    href={LINKEDIN_URL}
-                                    target="_blank"
-                                    rel="noreferrer noopener"
-                                    aria-label="Open LinkedIn profile"
-                                    className={iconBtn}
-                                >
-                                    <Image
-                                        src="/linkedin.svg"
-                                        alt=""
-                                        width={24}
-                                        height={24}
-                                        className={iconImg}
-                                        priority
-                                    />
-                                </a>
-                            </TooltipTrigger>
-                            <TooltipContent>{LINKEDIN_URL}</TooltipContent>
-                        </Tooltip>
-
-                        <Tooltip>
-                            <TooltipTrigger asChild>
-                                <a
-                                    href={`mailto:${EMAIL_ADDRESS}`}
-                                    target="_blank"
-                                    rel="noreferrer noopener"
-                                    aria-label="Send me an email"
-                                    className={iconBtn}
-                                >
-                                    <Image
-                                        src="/gmail.svg"
-                                        alt=""
-                                        width={24}
-                                        height={24}
-                                        className={iconImg}
-                                        priority
-                                    />
-                                </a>
-                            </TooltipTrigger>
-                            <TooltipContent>{EMAIL_ADDRESS}</TooltipContent>
-                        </Tooltip>
+                        {iconButtons.map((button) => (
+                            <Tooltip key={button.link}>
+                                <TooltipTrigger asChild>
+                                    <a
+                                        href={button.link}
+                                        target="_blank"
+                                        rel="noreferrer noopener"
+                                        aria-label={button.ariaLabel}
+                                        className={iconBtn}
+                                    >
+                                        <Image
+                                            src={button.imgSrc}
+                                            alt=""
+                                            width={24}
+                                            height={24}
+                                            priority
+                                        />
+                                    </a>
+                                </TooltipTrigger>
+                                <TooltipContent >{button.tooltipText}</TooltipContent>
+                            </Tooltip>
+                        ))}
                     </div>
                 </TooltipProvider>
             </div>

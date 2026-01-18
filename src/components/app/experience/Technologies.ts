@@ -4,7 +4,8 @@ export const Technologies: TechIconProps[] = [
     { slug: "react", label: "React" },
     { slug: "nextdotjs", label: "Next.js" },
     { slug: "react", label: "React Native" },
-    // { slug: "redux", label: "Redux" },
+    { slug: "redux", label: "Redux" },
+    { slug: "tanstack", label: "TanStack" },
     { slug: "typescript", label: "TypeScript" },
     { slug: "javascript", label: "JavaScript" },
     // { slug: "nodejs", label: "Node.js" },
@@ -13,4 +14,6 @@ export const Technologies: TechIconProps[] = [
     { slug: "fastapi", label: "FastAPI" },
     { slug: "html5", label: "HTML5" },
     { slug: "css", label: "CSS" },
+    { slug: "tailwindcss", label: "Tailwind CSS" },
+
 ];

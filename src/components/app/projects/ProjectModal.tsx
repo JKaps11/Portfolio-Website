@@ -20,29 +20,33 @@ interface ProjectModalProps {
 export default function ProjectModal({ project }: ProjectModalProps) {
     const detailedProject = DetailedProjects.find((p) => p.id === project.id);
     if (!detailedProject) return null;
+
+    const hasVideo = !!detailedProject.videoUrl;
+
+    if (!hasVideo) {
+        return <ProjectCard project={detailedProject} hasVideo={false} />;
+    }
+
     return (
         <Dialog>
             <DialogTrigger asChild>
-                <ProjectCard project={detailedProject} />
+                <ProjectCard project={detailedProject} hasVideo={true} />
             </DialogTrigger>
             <DialogContent>
                 <div className="flex flex-col gap-4">
-                    {detailedProject.videoUrl && (
-                        <div className="w-full aspect-video rounded-lg overflow-hidden">
-                            <iframe
-                                src={detailedProject.videoUrl.replace(
-                                    "watch?v=",
-                                    "embed/",
-                                )}
-                                title={detailedProject.name}
-                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                allowFullScreen
-                                className="w-full h-full rounded"
-                            />
-                        </div>
-                    )}
+                    <div className="w-full aspect-video rounded-lg overflow-hidden">
+                        <iframe
+                            src={detailedProject.videoUrl.replace(
+                                "watch?v=",
+                                "embed/",
+                            )}
+                            title={detailedProject.name}
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowFullScreen
+                            className="w-full h-full rounded"
+                        />
+                    </div>
                     <DialogTitle>{detailedProject.name}</DialogTitle>
-                    {/* <h2 className="text-2xl font-bold text-gray-900">{detailedProject.name}</h2> */}
                     <div className="flex items-center justify-start gap-4">
                         <TechTags technologies={detailedProject.technologies} />
                         <a
@@ -57,6 +61,9 @@ export default function ProjectModal({ project }: ProjectModalProps) {
                                 height="20"
                                 width="20"
                                 alt="GitHub"
+                                onError={(e) => {
+                                    e.currentTarget.style.display = "none";
+                                }}
                             />
                         </a>
                     </div>

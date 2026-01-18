@@ -1,23 +1,9 @@
 "use client";
-import { Button } from "@/components/ui/button";
 import TechTags, { Technology } from "./TechTags";
-import {
-    Card,
-    CardAction,
-    CardContent,
-    CardDescription,
-    CardFooter,
-    CardHeader,
-    CardTitle,
-} from "@/components/ui/card";
+import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
 import { forwardRef } from "react";
-import {
-    Tooltip,
-    TooltipContent,
-    TooltipProvider,
-    TooltipTrigger,
-} from "@/components/ui/tooltip";
+import { ExternalLink } from "lucide-react";
 
 export interface Project {
     id: string;
@@ -29,71 +15,53 @@ export interface Project {
 
 interface BaseProps extends React.ComponentPropsWithoutRef<typeof Card> {
     project: Project;
+    hasVideo?: boolean;
 }
 
 const ProjectCard = forwardRef<HTMLDivElement, BaseProps>(
-    ({ project, className, ...props }, ref) => {
+    ({ project, hasVideo, className, ...props }, ref) => {
         return (
             <Card
                 ref={ref}
                 {...props}
-                className={cn("cursor-pointer select-none", className)}
-                role="button"
-                tabIndex={0}
+                className={cn(
+                    "select-none transition-colors",
+                    hasVideo &&
+                        "cursor-pointer hover:bg-accent/50 hover:border-accent-foreground/20",
+                    className,
+                )}
+                role={hasVideo ? "button" : undefined}
+                tabIndex={hasVideo ? 0 : undefined}
             >
-                <CardHeader>
-                    <CardTitle>{project.name}</CardTitle>
-                    <CardAction>
-                        <TooltipProvider>
-                            <Tooltip delayDuration={150}>
-                                <TooltipTrigger asChild>
-                                    <Button
-                                        asChild
-                                        variant="ghost"
-                                        size="icon"
-                                        className="rounded-full cursor-pointer ring-1 ring-white/10 hover:ring-white/20 hover:bg-white/10"
-                                        onPointerDown={(e) =>
-                                            e.stopPropagation()
-                                        }
-                                        onClick={(e) => e.stopPropagation()}
-                                    >
-                                        <a
-                                            href={project.html_url}
-                                            target="_blank"
-                                            rel="noopener noreferrer"
-                                            aria-label="View on GitHub"
-                                        >
-                                            <img
-                                                src="https://cdn.simpleicons.org/github/fff?viewbox=auto&size=22"
-                                                alt=""
-                                                width={22}
-                                                height={22}
-                                                className="pointer-events-none"
-                                            />
-                                            <span className="sr-only">
-                                                GitHub
-                                            </span>
-                                        </a>
-                                    </Button>
-                                </TooltipTrigger>
-                                <TooltipContent side="left">
-                                    {project.html_url}
-                                </TooltipContent>
-                            </Tooltip>
-                        </TooltipProvider>
-                    </CardAction>
+                <CardHeader className="space-y-3 pb-4">
+                    {/* Metadata bar - GitHub link */}
+                    <div className="flex items-center justify-between gap-3">
+                        <div className="flex-1 min-w-0">
+                            <h3 className="text-lg font-semibold leading-tight text-foreground">
+                                {project.name}
+                            </h3>
+                        </div>
+                        <a
+                            href={project.html_url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            aria-label="View on GitHub"
+                            className="shrink-0 rounded-lg p-1.5 ring-1 ring-border hover:ring-border/80 hover:bg-accent transition-colors"
+                            onClick={(e) => e.stopPropagation()}
+                            onPointerDown={(e) => e.stopPropagation()}
+                        >
+                            <ExternalLink className="h-4 w-4 text-muted-foreground" />
+                        </a>
+                    </div>
+
+                    {/* Description */}
+                    <p className="text-sm leading-relaxed text-muted-foreground">
+                        {project.description || "No description available."}
+                    </p>
                 </CardHeader>
 
-                <CardContent>
-                    <CardDescription>
-                        {project.description || "No description available."}
-                    </CardDescription>
-                </CardContent>
-
-                <CardFooter>
-                    <div className="mt-6 flex items-end justify-between">
-                        <TechTags technologies={project.technologies} />
-                    </div>
+                <CardFooter className="pt-0">
+                    <TechTags technologies={project.technologies} />
                 </CardFooter>
             </Card>
         );
