@@ -6,7 +6,7 @@ export default function ProjectSection() {
     return (
         <section
             id="projects"
-            className="flex flex-col w-full h-full gap-4 mb-2"
+            className="flex flex-col w-full h-full gap-4"
         >
             <SectionTitle title="Projects" />
             <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3 w-full">
