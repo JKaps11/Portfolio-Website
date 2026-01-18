@@ -1,7 +1,7 @@
 import ExperienceDisplayer from "@/components/app/experience/ExperienceDisplayer";
 import SkillTag from "@/components/app/experience/SkillTag";
-import { Technologies } from "@/components/app/experience/Technologies";
-import { Separator } from "@/components/ui/separator";
+import SectionTitle from "@/components/common/SectionTitle";
+import { Technologies } from "./Technologies";
 
 export default function ExperienceSection() {
     return (
@@ -9,11 +9,10 @@ export default function ExperienceSection() {
             id="experiences"
             className="flex flex-col mx-auto gap-4 py-4 justify-start items-start w-full h-full"
         >
-            <h2>Experience</h2>
-            <Separator decorative />
+            <SectionTitle title="Experience" />
             <ExperienceDisplayer />
-            <h2 className="mt-4">Technologies</h2>
-            <Separator decorative />
+
+            <SectionTitle title="Technologies" className="mt-8" />
             <div className="w-full flex flex-row flex-wrap justify-start gap-4">
                 {Technologies.map((tech) => (
                     <SkillTag key={tech.label} {...tech} />

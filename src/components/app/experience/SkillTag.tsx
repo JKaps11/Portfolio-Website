@@ -1,5 +1,4 @@
-import fetchIconSvg from "@/components/common/fetchIcon";
-import { Item, ItemContent } from "@/components/ui/item";
+import { Badge } from "@/components/ui/badge";
 import Image from "next/image";
 
 export interface TechIconProps {
@@ -9,17 +8,15 @@ export interface TechIconProps {
 
 export default async function SkillTag({ slug, label }: TechIconProps) {
     return (
-        <Item variant="outline" className="inline-flex rounded-md">
-            <ItemContent className="flex items-center gap-2 px-3 py-1 text-sm">
-                <Image
-                    src={`/icons/${slug}.svg`}
-                    alt=""
-                    aria-hidden="true"
-                    width={20}
-                    height={20}
-                />
-                <span className="font-medium">{label}</span>
-            </ItemContent>
-        </Item>
+        <Badge variant="outline" className="px-3 py-1.5 text-sm bg-card">
+            <Image
+                src={`/icons/${slug}.svg`}
+                alt=""
+                aria-hidden="true"
+                width={16}
+                height={16}
+            />
+            <span className="font-medium">{label}</span>
+        </Badge>
     );
 }

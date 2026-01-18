@@ -8,10 +8,11 @@ import {
     NavigationMenuLink,
     NavigationMenuList,
 } from "@/components/ui/navigation-menu";
+import { ThemeToggle } from "@/components/common/theme-toggle";
 
 const NAV_ITEMS = [
     { id: "contact", label: "Contact" },
-    { id: "current", label: "Current" },
+    // { id: "current", label: "Current" },
     { id: "experiences", label: "Experiences" },
     { id: "projects", label: "Projects" },
 ];
@@ -67,31 +68,32 @@ export default function NavBar() {
     );
 
     return (
-        <div className="sticky top-4 z-50 flex w-full justify-center ">
-            <NavigationMenu
-                viewport={isMobile ?? false}
-                className=" overflow-hidden border bg-background/80 p-1 shadow-sm "
-            >
-                <NavigationMenuList>
-                    {NAV_ITEMS.map(({ id, label }) => (
-                        <NavigationMenuItem key={id}>
-                            <NavigationMenuLink asChild>
-                                <a
-                                    href={`#${id}`}
-                                    onClick={(e) => handleClick(e, id)}
-                                    className={linkClass}
-                                    data-active={activeId === id}
-                                    aria-current={
-                                        activeId === id ? "page" : undefined
-                                    }
-                                >
-                                    {label}
-                                </a>
-                            </NavigationMenuLink>
-                        </NavigationMenuItem>
-                    ))}
-                </NavigationMenuList>
-            </NavigationMenu>
+        <div className="sticky top-4 z-50 flex w-full justify-center">
+            <div className="flex items-center gap-2 rounded-lg border bg-background/80 p-1 shadow-sm backdrop-blur-sm">
+                <NavigationMenu viewport={isMobile ?? false}>
+                    <NavigationMenuList>
+                        {NAV_ITEMS.map(({ id, label }) => (
+                            <NavigationMenuItem key={id}>
+                                <NavigationMenuLink asChild>
+                                    <a
+                                        href={`#${id}`}
+                                        onClick={(e) => handleClick(e, id)}
+                                        className={linkClass}
+                                        data-active={activeId === id}
+                                        aria-current={
+                                            activeId === id ? "page" : undefined
+                                        }
+                                    >
+                                        {label}
+                                    </a>
+                                </NavigationMenuLink>
+                            </NavigationMenuItem>
+                        ))}
+                    </NavigationMenuList>
+                </NavigationMenu>
+                <div className="h-6 w-px bg-border" />
+                <ThemeToggle />
+            </div>
         </div>
     );
 }
