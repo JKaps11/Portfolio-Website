@@ -29,17 +29,23 @@ export interface Project {
 
 interface BaseProps extends React.ComponentPropsWithoutRef<typeof Card> {
     project: Project;
+    hasVideo?: boolean;
 }
 
 const ProjectCard = forwardRef<HTMLDivElement, BaseProps>(
-    ({ project, className, ...props }, ref) => {
+    ({ project, hasVideo, className, ...props }, ref) => {
         return (
             <Card
                 ref={ref}
                 {...props}
-                className={cn("cursor-pointer select-none", className)}
-                role="button"
-                tabIndex={0}
+                className={cn(
+                    "select-none transition-colors",
+                    hasVideo &&
+                        "cursor-pointer hover:bg-accent/50 hover:border-accent-foreground/20",
+                    className,
+                )}
+                role={hasVideo ? "button" : undefined}
+                tabIndex={hasVideo ? 0 : undefined}
             >
                 <CardHeader>
                     <CardTitle>{project.name}</CardTitle>
@@ -69,6 +75,10 @@ const ProjectCard = forwardRef<HTMLDivElement, BaseProps>(
                                                 width={22}
                                                 height={22}
                                                 className="pointer-events-none"
+                                                onError={(e) => {
+                                                    e.currentTarget.style.display =
+                                                        "none";
+                                                }}
                                             />
                                             <span className="sr-only">
                                                 GitHub

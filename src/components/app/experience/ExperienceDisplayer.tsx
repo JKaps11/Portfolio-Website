@@ -43,15 +43,15 @@ export default function ExperienceDisplayer() {
                 className="w-full"
             >
                 <ToggleGroupItem value="work" aria-label="Toggle work">
-                    <Briefcase onClick={() => setMode("work")} />
+                    <Briefcase aria-hidden="true" />
                     <p>Work</p>
                 </ToggleGroupItem>
                 <ToggleGroupItem
                     value="education"
                     aria-label="Toggle education"
                 >
-                    <GraduationCap onClick={() => setMode("education")} />
-                    <p>Education </p>
+                    <GraduationCap aria-hidden="true" />
+                    <p>Education</p>
                 </ToggleGroupItem>
             </ToggleGroup>
             <div className="flex flex-col w-full gap-8 mt-4">

@@ -13,7 +13,8 @@ export default async function SkillTag({ slug, label }: TechIconProps) {
             <ItemContent className="flex items-center gap-2 px-3 py-1 text-sm">
                 <Image
                     src={`/icons/${slug}.svg`}
-                    alt={label}
+                    alt=""
+                    aria-hidden="true"
                     width={20}
                     height={20}
                 />

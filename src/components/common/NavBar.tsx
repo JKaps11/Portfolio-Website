@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { useIsMobile } from "@/hooks/useIsMobile";
 import {
     NavigationMenu,
@@ -11,6 +11,7 @@ import {
 
 const NAV_ITEMS = [
     { id: "contact", label: "Contact" },
+    { id: "current", label: "Current" },
     { id: "experiences", label: "Experiences" },
     { id: "projects", label: "Projects" },
 ];
@@ -39,24 +40,27 @@ function useSectionSpy(ids: string[], rootMargin = "-40% 0px -50%") {
     return activeId;
 }
 
+const linkClass =
+    "h-10 px-5 flex items-center justify-center text-sm font-medium transition-colors " +
+    "text-muted-foreground hover:text-foreground hover:bg-accent/60 " +
+    "data-[active=true]:bg-accent data-[active=true]:text-accent-foreground ";
+
 export default function NavBar() {
     const isMobile = useIsMobile();
     const activeId = useSectionSpy(NAV_ITEMS.map((x) => x.id));
-
-    const linkClass = useMemo(
-        () =>
-            "h-10 px-5 flex items-center justify-center text-sm font-medium transition-colors " +
-            "text-muted-foreground hover:text-foreground hover:bg-accent/60 " +
-            "data-[active=true]:bg-accent data-[active=true]:text-accent-foreground ",
-        [],
-    );
 
     const handleClick = useCallback(
         (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
             e.preventDefault();
             const el = document.getElementById(id);
             if (!el) return;
-            el.scrollIntoView({ behavior: "smooth", block: "start" });
+            const prefersReducedMotion = window.matchMedia(
+                "(prefers-reduced-motion: reduce)",
+            ).matches;
+            el.scrollIntoView({
+                behavior: prefersReducedMotion ? "instant" : "smooth",
+                block: "start",
+            });
             history.replaceState(null, "", `#${id}`);
         },
         [],
@@ -65,7 +69,7 @@ export default function NavBar() {
     return (
         <div className="sticky top-4 z-50 flex w-full justify-center ">
             <NavigationMenu
-                viewport={isMobile}
+                viewport={isMobile ?? false}
                 className=" overflow-hidden border bg-background/80 p-1 shadow-sm "
             >
                 <NavigationMenuList>
