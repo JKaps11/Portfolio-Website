@@ -1,5 +1,4 @@
 // import { Badge } from "@/components/ui/badge";
-import { cn } from "@/lib/utils";
 import { Separator } from "../ui/separator";
 
 interface SectionTitleProps {
@@ -12,7 +11,7 @@ export default function SectionTitle({
     return (
         <>
             <h2 className="mt-2">{title}</h2>
-            <Separator decorative />
+            <Separator />
         </>
     );
 }

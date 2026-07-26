@@ -1,20 +1,17 @@
 "use client";
 
-import * as React from "react";
 import { Moon, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
 import { Button } from "@/components/ui/button";
+import { useHydrated } from "@/hooks/useHydrated";
 
 export function ThemeToggle() {
     const { theme, setTheme } = useTheme();
-    const [mounted, setMounted] = React.useState(false);
+    // The resolved theme is only known on the client, so render a placeholder
+    // until hydration to avoid a mismatch.
+    const hydrated = useHydrated();
 
-    // Avoid hydration mismatch
-    React.useEffect(() => {
-        setMounted(true);
-    }, []);
-
-    if (!mounted) {
+    if (!hydrated) {
         return (
             <Button variant="ghost" size="icon" className="h-10 w-10" disabled>
                 <Sun className="h-5 w-5" />

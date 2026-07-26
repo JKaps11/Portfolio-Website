@@ -7,8 +7,10 @@ export interface TechIconProps {
 }
 
 export default async function SkillTag({ slug, label }: TechIconProps) {
+    // h-auto releases the Badge base variant's fixed h-5, which otherwise
+    // clamps the badge and makes py-* a no-op.
     return (
-        <Badge variant="outline" className="px-3 py-1.5 text-sm bg-card">
+        <Badge variant="outline" className="h-auto px-3 py-2 text-sm bg-card">
             <Image
                 src={`/icons/${slug}.svg`}
                 alt=""

@@ -1,7 +1,6 @@
 "use client";
 
 import { useCallback, useEffect, useState } from "react";
-import { useIsMobile } from "@/hooks/useIsMobile";
 import {
     NavigationMenu,
     NavigationMenuItem,
@@ -47,7 +46,6 @@ const linkClass =
     "data-[active=true]:bg-accent data-[active=true]:text-accent-foreground ";
 
 export default function NavBar() {
-    const isMobile = useIsMobile();
     const activeId = useSectionSpy(NAV_ITEMS.map((x) => x.id));
 
     const handleClick = useCallback(
@@ -70,22 +68,26 @@ export default function NavBar() {
     return (
         <div className="sticky top-4 z-50 flex w-full justify-center">
             <div className="flex items-center gap-2 rounded-lg border bg-background/80 p-1 shadow-sm backdrop-blur-sm">
-                <NavigationMenu viewport={isMobile ?? false}>
+                <NavigationMenu>
                     <NavigationMenuList>
                         {NAV_ITEMS.map(({ id, label }) => (
                             <NavigationMenuItem key={id}>
-                                <NavigationMenuLink asChild>
-                                    <a
-                                        href={`#${id}`}
-                                        onClick={(e) => handleClick(e, id)}
-                                        className={linkClass}
-                                        data-active={activeId === id}
-                                        aria-current={
-                                            activeId === id ? "page" : undefined
-                                        }
-                                    >
-                                        {label}
-                                    </a>
+                                <NavigationMenuLink
+                                    render={
+                                        <a
+                                            href={`#${id}`}
+                                            onClick={(e) => handleClick(e, id)}
+                                            className={linkClass}
+                                            data-active={activeId === id}
+                                            aria-current={
+                                                activeId === id
+                                                    ? "page"
+                                                    : undefined
+                                            }
+                                        />
+                                    }
+                                >
+                                    {label}
                                 </NavigationMenuLink>
                             </NavigationMenuItem>
                         ))}

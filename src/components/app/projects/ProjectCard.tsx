@@ -1,6 +1,6 @@
 "use client";
 import TechTags, { Technology } from "./TechTags";
-import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card";
+import { Card, CardFooter, CardHeader } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
 import { forwardRef } from "react";
 import { ExternalLink } from "lucide-react";
@@ -60,7 +60,9 @@ const ProjectCard = forwardRef<HTMLDivElement, BaseProps>(
                     </p>
                 </CardHeader>
 
-                <CardFooter className="pt-0">
+                {/* mt-auto pins the tags to the bottom so they line up across
+                    a row of cards with different description lengths. */}
+                <CardFooter className="mt-auto border-t-0 bg-transparent pt-0">
                     <TechTags technologies={project.technologies} />
                 </CardFooter>
             </Card>
