@@ -1,5 +1,6 @@
 import Image from "next/image";
-import { MapPin } from "lucide-react";
+import { MapPin, Mail } from "lucide-react";
+import { GithubIcon, LinkedinIcon } from "@/components/common/BrandIcons";
 import { Button } from "@/components/ui/button";
 import {
     Tooltip,
@@ -12,36 +13,38 @@ const GITHUB_URL = "https://github.com/JKaps11";
 const LINKEDIN_URL = "https://www.linkedin.com/in/joshua-kaplan-a88315245";
 const EMAIL_ADDRESS = "kapsjosh11@gmail.com";
 
+// size-10 matches the Resume button's h-10 so the whole row shares one height.
 const iconBtn =
-    "bg-primary group inline-flex items-center justify-center rounded-xl ring-1 ring-border hover:ring-border/80 hover:bg-primary/90 transition-colors p-2";
+    "bg-primary text-primary-foreground group inline-flex items-center justify-center rounded-xl ring-1 ring-border hover:ring-border/80 hover:bg-primary/90 transition-colors size-10 " +
+    "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background";
 
 interface IconButton {
     link: string;
     ariaLabel: string;
-    imgSrc: string;
-    imgSrcDark?: string;
+    Icon: typeof Mail | typeof GithubIcon;
     tooltipText: string;
 }
 
+// One monochrome icon set inheriting currentColor, so the glyphs read against
+// the navy chip and stay consistent with each other in both themes.
 const iconButtons: IconButton[] = [
     {
         link: GITHUB_URL,
         ariaLabel: "Open GitHub profile",
-        // imgSrc: "/githubWhite.svg",
-        imgSrc: "/githubBlack.svg",
+        Icon: GithubIcon,
         tooltipText: "Github Profile",
     },
     {
         link: LINKEDIN_URL,
         ariaLabel: "Open LinkedIn profile",
-        imgSrc: "/linkedin.svg",
+        Icon: LinkedinIcon,
         tooltipText: "LinkedIn Profile",
     },
     {
         link: `mailto:${EMAIL_ADDRESS}?subject=Contact%20from%20Portfolio%20Website`,
         ariaLabel: "Send me an email",
-        imgSrc: "/gmail.svg",
-        tooltipText: "kapsjosh11@gmail.com",
+        Icon: Mail,
+        tooltipText: EMAIL_ADDRESS,
     },
 ];
 
@@ -74,38 +77,47 @@ export default function LandingSection() {
                 </p>
 
                 <TooltipProvider>
-                    <div className="flex justify-start items-center gap-5 my-2">
-                        <a
-                            href="/Joshua_Kaplan_Resume.pdf"
-                            download="Joshua_Kaplan_Resume.pdf"
+                    {/* Wider gap after Resume, tight gap within the icon set, so
+                        the icons read as one group rather than four equal items. */}
+                    <div className="flex justify-start items-center gap-4 my-2">
+                        {/* render so the link is the button, rather than a
+                            button nested inside an anchor. */}
+                        {/* nativeButton={false} because this renders an <a>;
+                            Base UI otherwise expects a real <button>. */}
+                        <Button
+                            size="lg"
+                            className="h-10 px-4"
+                            nativeButton={false}
+                            render={
+                                <a
+                                    href="/Joshua_Kaplan_Resume.pdf"
+                                    download="Joshua_Kaplan_Resume.pdf"
+                                />
+                            }
                         >
-                            <Button size="lg" aria-label="Get resume">
-                                Resume
-                            </Button>
-                        </a>
+                            Resume
+                        </Button>
 
-                        {iconButtons.map((button) => (
-                            <Tooltip key={button.link}>
-                                <TooltipTrigger asChild>
-                                    <a
-                                        href={button.link}
-                                        target="_blank"
-                                        rel="noreferrer noopener"
-                                        aria-label={button.ariaLabel}
-                                        className={iconBtn}
+                        <div className="flex items-center gap-1.5">
+                            {iconButtons.map(({ link, ariaLabel, Icon, tooltipText }) => (
+                                <Tooltip key={link}>
+                                    <TooltipTrigger
+                                        render={
+                                            <a
+                                                href={link}
+                                                target="_blank"
+                                                rel="noreferrer noopener"
+                                                aria-label={ariaLabel}
+                                                className={iconBtn}
+                                            />
+                                        }
                                     >
-                                        <Image
-                                            src={button.imgSrc}
-                                            alt=""
-                                            width={24}
-                                            height={24}
-                                            priority
-                                        />
-                                    </a>
-                                </TooltipTrigger>
-                                <TooltipContent >{button.tooltipText}</TooltipContent>
-                            </Tooltip>
-                        ))}
+                                        <Icon aria-hidden size={22} />
+                                    </TooltipTrigger>
+                                    <TooltipContent>{tooltipText}</TooltipContent>
+                                </Tooltip>
+                            ))}
+                        </div>
                     </div>
                 </TooltipProvider>
             </div>

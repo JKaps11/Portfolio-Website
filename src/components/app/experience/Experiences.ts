@@ -22,7 +22,7 @@ export const MyJobs: WorkExperience[] = [
         description: `• Built and styled core frontend features including the Accounts page, Settings modal, and Sidebar using React, Ant Design, CSS, and Tailwind
     • Designed and implemented a scalable Redux schema to manage hierarchical settings data across the application
     • Collaborated with a small team using Jira and Slack in an Agile environment to iterate quickly on UI/UX feedback and meet sprint goals`,
-        logo: "Syndata.svg"
+        logo: "/Syndata.svg"
       },
     {
         type: "work",
@@ -58,6 +58,19 @@ export const MyJobs: WorkExperience[] = [
 ];
 
 export const MyEducation: EducationExperience[] = [
+    {
+        type: "education",
+        id: "edu-0",
+        date: "Issued December 2025 - Expires December 2028",
+        title: "Amazon Web Services",
+        degree: "AWS Certified Cloud Practitioner",
+        description: "",
+        logo: "/aws.svg",
+        credential: {
+            label: "View certificate",
+            href: "/AWS-Certified-Cloud-Practitioner.pdf",
+        },
+    },
     {
         type: "education",
         id: "edu-1",

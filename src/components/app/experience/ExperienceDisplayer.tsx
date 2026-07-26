@@ -13,6 +13,11 @@ interface ExperienceBase {
     title: string;
     description: string;
     logo: string;
+    /** Optional linked document (e.g. a certificate PDF served from /public). */
+    credential?: {
+        label: string;
+        href: string;
+    };
 }
 
 export interface WorkExperience extends ExperienceBase {
@@ -33,9 +38,13 @@ export default function ExperienceDisplayer() {
     return (
         <div className="w-full flex flex-col">
                 <ToggleGroup
-                    defaultValue="work"
-                    onValueChange={(value) => setMode(value as DisplayerMode)}
-                    type="single"
+                    // Base UI models the value as an array even for single
+                    // selection; controlled so one option is always active.
+                    value={[mode]}
+                    onValueChange={(value) => {
+                        const next = value[0];
+                        if (next) setMode(next as DisplayerMode);
+                    }}
                     variant="outline"
                     size="lg"
                     className="w-full"

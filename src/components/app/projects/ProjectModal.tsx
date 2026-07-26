@@ -1,9 +1,15 @@
 "use client";
 import TechTags, { Technology } from "./TechTags";
 import { DetailedProjects } from "./Projects";
-import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
+import {
+    Dialog,
+    DialogContent,
+    DialogTitle,
+    DialogTrigger,
+} from "@/components/ui/dialog";
 import ProjectCard, { Project } from "./ProjectCard";
-import { DialogTitle } from "@radix-ui/react-dialog";
+import { GithubIcon } from "@/components/common/BrandIcons";
+import { ExternalLink } from "lucide-react";
 
 export interface ProjectDetails {
     projectId: string;
@@ -29,9 +35,14 @@ export default function ProjectModal({ project }: ProjectModalProps) {
 
     return (
         <Dialog>
-            <DialogTrigger asChild>
-                <ProjectCard project={detailedProject} hasVideo={true} />
-            </DialogTrigger>
+            {/* nativeButton={false} because ProjectCard renders a <div>;
+                Base UI otherwise expects a real <button>. */}
+            <DialogTrigger
+                nativeButton={false}
+                render={
+                    <ProjectCard project={detailedProject} hasVideo={true} />
+                }
+            />
             <DialogContent>
                 <div className="flex flex-col gap-4">
                     <div className="w-full aspect-video rounded-lg overflow-hidden">
@@ -49,22 +60,25 @@ export default function ProjectModal({ project }: ProjectModalProps) {
                     <DialogTitle>{detailedProject.name}</DialogTitle>
                     <div className="flex items-center justify-start gap-4">
                         <TechTags technologies={detailedProject.technologies} />
+                        {detailedProject.live_url && (
+                            <a
+                                href={detailedProject.live_url}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="text-black hover:text-gray-800 transition-colors"
+                                aria-label={`Open the live ${detailedProject.name} site`}
+                            >
+                                <ExternalLink aria-hidden size={20} />
+                            </a>
+                        )}
                         <a
                             href={detailedProject.html_url}
                             target="_blank"
                             rel="noopener noreferrer"
                             className="text-black hover:text-gray-800 transition-colors"
-                            aria-label="View on GitHub"
+                            aria-label={`View ${detailedProject.name} on GitHub`}
                         >
-                            <img
-                                src="https://cdn.simpleicons.org/github"
-                                height="20"
-                                width="20"
-                                alt="GitHub"
-                                onError={(e) => {
-                                    e.currentTarget.style.display = "none";
-                                }}
-                            />
+                            <GithubIcon aria-hidden size={20} />
                         </a>
                     </div>
                     <p className="text-sm text-gray-700 whitespace-pre-line">
