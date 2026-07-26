@@ -12,7 +12,11 @@ export type Technology =
   | 'React Native'
   | 'JavaScript'
   | 'Express'
-  | 'MongoDB';
+  | 'MongoDB'
+  | 'C'
+  | 'Vite'
+  | 'tRPC'
+  | 'PostgreSQL';
 
 export interface TechColor {
   bgColor: string;
@@ -34,6 +38,10 @@ export const TECH_COLORS: Record<Technology, TechColor> = {
   JavaScript:    { bgColor: 'bg-yellow-100', textColor: 'text-yellow-900' },
   Express:       { bgColor: 'bg-stone-100', textColor: 'text-stone-700' },
   MongoDB:       { bgColor: 'bg-green-50', textColor: 'text-green-800' },
+  C:             { bgColor: 'bg-slate-100', textColor: 'text-slate-700' },
+  Vite:          { bgColor: 'bg-violet-100', textColor: 'text-violet-700' },
+  tRPC:          { bgColor: 'bg-sky-100', textColor: 'text-sky-800' },
+  PostgreSQL:    { bgColor: 'bg-blue-50', textColor: 'text-blue-900' },
 };
 
 

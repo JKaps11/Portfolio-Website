@@ -15,5 +15,7 @@ export const Technologies: TechIconProps[] = [
     { slug: "html5", label: "HTML5" },
     { slug: "css", label: "CSS" },
     { slug: "tailwindcss", label: "Tailwind CSS" },
+    { slug: "claudecode", label: "Claude Code" },
+    { slug: "kiro", label: "Kiro", src: "/kiro.svg" },
 
 ];

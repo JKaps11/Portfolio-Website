@@ -5,6 +5,8 @@ interface Project {
   name: string;
   description: string;
   html_url: string;
+  /** Deployed, clickable version of the project, when one exists. */
+  live_url?: string;
   technologies: Technology[];
 }
 
@@ -13,7 +15,34 @@ interface ProjectDetails extends Project {
   summary: string;
 }
 
+// Ordered strongest-first: the top of the list is what a reader sees before
+// they decide whether to keep scrolling.
 export const Projects: Project[] = [
+  {
+    id: "willdo",
+    name: "WillDo",
+    description:
+      "Turns any skill into a tracked learning plan, with AI-generated sub-skill trees, a drag-and-drop editor, and daily practice logging. Built as a monorepo where the web and native mobile clients share one type-safe tRPC API.",
+    html_url: "https://github.com/JKaps11/WillDo",
+    technologies: ["React", "TypeScript", "tRPC", "PostgreSQL", "Expo"],
+  },
+  {
+    id: "liftlog",
+    name: "LiftLog",
+    description:
+      "A workout logger built with deliberately no backend. Every set lives in IndexedDB on the device, so it works offline and needs no account, and persistence sits behind a swappable store layer that lets the test suite run without a browser.",
+    html_url: "https://github.com/JKaps11/LiftLog",
+    live_url: "https://lift-log-blue.vercel.app",
+    technologies: ["React", "TypeScript", "Vite"],
+  },
+  {
+    id: "pebble-watchfaces",
+    name: "Pebble Watchfaces",
+    description:
+      "Watchfaces for Pebble smartwatches, written in C over a shared component layer. A companion Python studio renders design variants through the watch emulator, so comparisons are pixel-exact to the hardware instead of an HTML mockup.",
+    html_url: "https://github.com/JKaps11/pebble_watchfaces",
+    technologies: ["C", "Python"],
+  },
   {
     id: "husky-trails",
     name: "Husky Trails",
@@ -30,30 +59,6 @@ export const Projects: Project[] = [
     html_url: "https://github.com/JKaps11/App-Launcher",
     technologies: ["Rust"],
   },
-  {
-    id: "inline-notes",
-    name: "Inline Notes Vscode Extension",
-    description:
-      "A VSCode extension that allows users to create and manage inline notes directly within their code files. Built with TypeScript and the VSCode API.",
-    html_url: "https://github.com/JKaps11/Inline-Notes",
-    technologies: ["TypeScript"]
-  },
-  {
-    id: "portfolio-website",
-    name: "Portfolio Website",
-    description:
-      "A personal portfolio website showcasing projects and skills. Built with Next.js and TypeScript.",
-    html_url: "https://github.com/JKaps11/Portfolio-Website",
-    technologies: ["React", "Next.js", "TypeScript"],
-  },
-  {
-    id: "notion-integration",
-    name: "Notion Integration",
-    description:
-      "A project demonstrating how to integrate with the Notion API using TypeScript. Includes scripts to update and reset counters in a Notion database on a weekly basis.",
-    html_url: "https://github.com/JKaps11/Notion-Integration",
-    technologies: ["TypeScript", "Node.js"],
-  },
   // {
   //   id: "course-registration",
   //   name: "Course Registration",
@@ -62,18 +67,25 @@ export const Projects: Project[] = [
   //   html_url: "https://github.com/JKaps11/Course-Registration",
   //   technologies: ["Vue", "JavaScript"],
   // },
-  {
-    id: "recipe-application",
-    name: "Recipe Application",
-    description:
-      "A recipe creator application using the MERN stack. Features login authentication and authorization with Auth0.",
-    html_url: "https://github.com/JKaps11/RecipeApplication",
-    technologies: ["React", "Node.js", "Express", "MongoDB", "TypeScript"],
-  },
 ];
 
 
 const ProjectExtras: { id: string; videoUrl: string; summary: string }[] = [
+  {
+    id: 'willdo',
+    videoUrl: '',
+    summary: '',
+  },
+  {
+    id: 'liftlog',
+    videoUrl: '',
+    summary: '',
+  },
+  {
+    id: 'pebble-watchfaces',
+    videoUrl: '',
+    summary: '',
+  },
   {
     id: 'husky-trails',
     videoUrl: 'https://www.youtube.com/watch?v=if67bR9YJI8',
@@ -84,31 +96,11 @@ const ProjectExtras: { id: string; videoUrl: string; summary: string }[] = [
     videoUrl: '',
     summary: '',
   },
-  {
-    id: 'inline-notes',
-    videoUrl: '',
-    summary: '',
-  },
-  {
-    id: 'portfolio-website',
-    videoUrl: '',
-    summary: '',
-  },
-  {
-    id: 'notion-integration',
-    videoUrl: '',
-    summary: '',
-  },
   // {
   //   id: 'course-registration',
   //   videoUrl: 'https://www.youtube.com/watch?v=VSPCmfE24IE',
   //   summary: '',
   // },
-  {
-    id: 'recipe-application',
-    videoUrl: '',
-    summary: '',
-  },
 ];
 
 export const DetailedProjects: ProjectDetails[] = Projects.map((project) => {

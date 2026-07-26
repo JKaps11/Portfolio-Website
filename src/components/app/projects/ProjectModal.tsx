@@ -9,6 +9,7 @@ import {
 } from "@/components/ui/dialog";
 import ProjectCard, { Project } from "./ProjectCard";
 import { GithubIcon } from "@/components/common/BrandIcons";
+import { ExternalLink } from "lucide-react";
 
 export interface ProjectDetails {
     projectId: string;
@@ -59,12 +60,23 @@ export default function ProjectModal({ project }: ProjectModalProps) {
                     <DialogTitle>{detailedProject.name}</DialogTitle>
                     <div className="flex items-center justify-start gap-4">
                         <TechTags technologies={detailedProject.technologies} />
+                        {detailedProject.live_url && (
+                            <a
+                                href={detailedProject.live_url}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="text-black hover:text-gray-800 transition-colors"
+                                aria-label={`Open the live ${detailedProject.name} site`}
+                            >
+                                <ExternalLink aria-hidden size={20} />
+                            </a>
+                        )}
                         <a
                             href={detailedProject.html_url}
                             target="_blank"
                             rel="noopener noreferrer"
                             className="text-black hover:text-gray-800 transition-colors"
-                            aria-label="View on GitHub"
+                            aria-label={`View ${detailedProject.name} on GitHub`}
                         >
                             <GithubIcon aria-hidden size={20} />
                         </a>
