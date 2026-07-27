@@ -3,6 +3,11 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
+/* next-themes sets attribute="class", but Tailwind v4's default dark: variant
+   keys off prefers-color-scheme. Bind it to the .dark class instead so dark:
+   utilities follow the theme toggle rather than the OS setting. */
+@custom-variant dark (&:where(.dark, .dark *));
+
 html {
     scroll-behavior: smooth;
 }
