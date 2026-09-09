@@ -1,7 +1,9 @@
 import Image from "next/image";
 import { MapPin, Mail } from "lucide-react";
 import { GithubIcon, LinkedinIcon } from "@/components/common/BrandIcons";
-import { Button } from "@/components/ui/button";
+// Resume download disabled - the Button import is only needed by the
+// commented-out resume link below.
+// import { Button } from "@/components/ui/button";
 import {
     Tooltip,
     TooltipContent,
@@ -13,7 +15,7 @@ const GITHUB_URL = "https://github.com/JKaps11";
 const LINKEDIN_URL = "https://www.linkedin.com/in/joshua-kaplan-a88315245";
 const EMAIL_ADDRESS = "kapsjosh11@gmail.com";
 
-// size-10 matches the Resume button's h-10 so the whole row shares one height.
+// size-10 keeps the icon row at the same 40px height the Resume button used.
 const iconBtn =
     "bg-primary text-primary-foreground group inline-flex items-center justify-center rounded-xl ring-1 ring-border hover:ring-border/80 hover:bg-primary/90 transition-colors size-10 " +
     "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background";
@@ -77,13 +79,8 @@ export default function LandingSection() {
                 </p>
 
                 <TooltipProvider>
-                    {/* Wider gap after Resume, tight gap within the icon set, so
-                        the icons read as one group rather than four equal items. */}
                     <div className="flex justify-start items-center gap-4 my-2">
-                        {/* render so the link is the button, rather than a
-                            button nested inside an anchor. */}
-                        {/* nativeButton={false} because this renders an <a>;
-                            Base UI otherwise expects a real <button>. */}
+                        {/* Resume download disabled.
                         <Button
                             size="lg"
                             className="h-10 px-4"
@@ -97,6 +94,7 @@ export default function LandingSection() {
                         >
                             Resume
                         </Button>
+                        */}
 
                         <div className="flex items-center gap-1.5">
                             {iconButtons.map(({ link, ariaLabel, Icon, tooltipText }) => (
