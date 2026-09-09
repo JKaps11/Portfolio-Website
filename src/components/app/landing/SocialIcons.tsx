@@ -1,6 +1,8 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
+// Resume download disabled - the Button import is only needed by the
+// commented-out resume link below.
+// import { Button } from "@/components/ui/button";
 import {
     Tooltip,
     TooltipContent,
@@ -29,6 +31,7 @@ export default function SocialIcons({
     return (
         <TooltipProvider>
             <div className="flex justify-start items-center gap-5 my-2">
+                {/* Resume download disabled.
                 <a
                     href="/Joshua_Kaplan_Resume.pdf"
                     download="Joshua_Kaplan_Resume.pdf"
@@ -37,6 +40,7 @@ export default function SocialIcons({
                         Resume
                     </Button>
                 </a>
+                */}
 
                 <Tooltip>
                     <TooltipTrigger className={iconButtonClass}>
