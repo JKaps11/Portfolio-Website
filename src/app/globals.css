@@ -102,6 +102,12 @@ h2 {
         0px 4px 6px 0px hsl(240 30% 25% / 0.12),
         0px 8px 10px -1px hsl(240 30% 25% / 0.12);
     --shadow-2xl: 0px 4px 6px 0px hsl(240 30% 25% / 0.3);
+
+  /* Fixed (non-inverting) chip colors for the contact icon row: always a
+     white chip with the navy used for dark mode's background, in both
+     light and dark mode. */
+  --icon-chip-bg: oklch(0.984 0.003 247.859);
+  --icon-chip-fg: oklch(0.137 0.036 258.526);
 }
 
 .dark {

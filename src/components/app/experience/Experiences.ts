@@ -73,6 +73,19 @@ export const MyEducation: EducationExperience[] = [
     },
     {
         type: "education",
+        id: "edu-0b",
+        date: "Issued September 2026 - Expires September 2029",
+        title: "Amazon Web Services",
+        degree: "AWS Certified Developer - Associate",
+        description: "",
+        logo: "/aws.svg",
+        credential: {
+            label: "View certificate",
+            href: "/AWS-Certified-Developer-Associate.pdf",
+        },
+    },
+    {
+        type: "education",
         id: "edu-1",
         date: "August 2021 - May 2025",
         title: "University of Connecticut",

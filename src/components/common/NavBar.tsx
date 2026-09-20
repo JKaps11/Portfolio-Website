@@ -8,6 +8,7 @@ import {
     NavigationMenuList,
 } from "@/components/ui/navigation-menu";
 import { ThemeToggle } from "@/components/common/theme-toggle";
+import { cn } from "@/lib/utils";
 
 const NAV_ITEMS = [
     { id: "contact", label: "Contact" },
@@ -43,7 +44,7 @@ function useSectionSpy(ids: string[], rootMargin = "-40% 0px -50%") {
 const linkClass =
     "h-10 px-5 flex items-center justify-center text-sm font-medium transition-colors " +
     "text-muted-foreground hover:text-foreground hover:bg-accent/60 " +
-    "data-[active=true]:bg-accent data-[active=true]:text-accent-foreground ";
+    "data-[nav-active=true]:bg-accent data-[nav-active=true]:text-accent-foreground ";
 
 export default function NavBar() {
     const activeId = useSectionSpy(NAV_ITEMS.map((x) => x.id));
@@ -73,12 +74,15 @@ export default function NavBar() {
                         {NAV_ITEMS.map(({ id, label }) => (
                             <NavigationMenuItem key={id}>
                                 <NavigationMenuLink
+                                    className={cn(
+                                        linkClass,
+                                        "hover:bg-transparent focus:bg-transparent data-active:bg-transparent",
+                                    )}
                                     render={
                                         <a
                                             href={`#${id}`}
                                             onClick={(e) => handleClick(e, id)}
-                                            className={linkClass}
-                                            data-active={activeId === id}
+                                            data-nav-active={activeId === id}
                                             aria-current={
                                                 activeId === id
                                                     ? "page"

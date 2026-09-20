@@ -16,8 +16,11 @@ const LINKEDIN_URL = "https://www.linkedin.com/in/joshua-kaplan-a88315245";
 const EMAIL_ADDRESS = "kapsjosh11@gmail.com";
 
 // size-10 keeps the icon row at the same 40px height the Resume button used.
+// Light mode keeps the default navy-chip/white-icon look from --primary.
+// Dark mode is pinned to a white chip with the (fixed) navy mark instead of
+// letting --primary invert to a white-chip/near-black-icon look.
 const iconBtn =
-    "bg-primary text-primary-foreground group inline-flex items-center justify-center rounded-xl ring-1 ring-border hover:ring-border/80 hover:bg-primary/90 transition-colors size-10 " +
+    "bg-primary text-primary-foreground dark:bg-[var(--icon-chip-bg)] dark:text-[var(--icon-chip-fg)] group inline-flex items-center justify-center rounded-xl ring-1 ring-border hover:ring-border/80 hover:opacity-90 transition-colors size-10 " +
     "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background";
 
 interface IconButton {
